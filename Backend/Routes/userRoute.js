@@ -3,8 +3,8 @@ const checkValidations = require("../core/validations/checkValidations");
 const controller = require("./../Controller/UserController");
 const authorization = require("./../core/Authroization/authorization");
 const userValidation = require("./../core/validations/userValidations");
-
 const UserRoute = express.Router();
+
 UserRoute.route("/users")
   .all(authorization.checkAdmin)
   .get(controller.getAllUsers)

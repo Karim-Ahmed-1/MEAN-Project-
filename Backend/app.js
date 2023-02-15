@@ -7,7 +7,7 @@ const userRoute = require("./Routes/userRoute");
 const autthenticationRoute = require("./Routes/authenticationRoute");
 
 const categoryRoute = require("./Routes/categoryRoute");
-const productRoute = require("./Routes/orderRoute");
+const productRoute = require("./Routes/productRoute");
 const orderRoute = require("./Routes/orderRoute");
 const authorization = require("./core/Authroization/authorization");
 
@@ -36,7 +36,7 @@ server.use(authorization);
 server.use(userRoute);
 server.use(categoryRoute);
 server.use(productRoute);
-server.use(orderRoute);
+//server.use(orderRoute);
 
 server.use((request, response, next) => {
   response.status(404).json({ message: "Page Not Found" });

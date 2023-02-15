@@ -4,7 +4,6 @@ const CategorySchema = mongoose.model("category");
 
 module.exports.getAllCategories = (request, response, next) => {
   CategorySchema.find({})
-    .select("fullName email phone ")
     .then((data) => {
       response.status(200).json({ data });
     })

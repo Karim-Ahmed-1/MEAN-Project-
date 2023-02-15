@@ -53,3 +53,4 @@ module.exports.deleteProductValidation = [
 module.exports.getProductByIdValidation = [
   param("id").isMongoId().withMessage("Id must be ObjectId!"),
 ];
+module.exports.getFeatureValidation = [];

@@ -8,6 +8,7 @@ module.exports.getAllProducts = (request, response, next) => {
   if (request.query.categories) {
     filter = { category: request.query.categories.split(",") };
   }
+
   ProductSchema.find(filter)
     .populate("category")
     .then((data) => {
@@ -48,7 +49,6 @@ module.exports.addProduct = async (request, response, next) => {
     const category = await CategorySchema.findById(request.body.category);
     if (!category) throw new Error("Invalid category");
     let data = await productObject.save();
-
     response.status(200).json({ data });
   } catch (error) {
     next(error);
@@ -57,10 +57,14 @@ module.exports.addProduct = async (request, response, next) => {
 
 module.exports.UpdateProduct = async (request, response, next) => {
   try {
-    const category = await CategorySchema.findById(request.body.category);
-    if (!category) throw new Error("Invalid category");
-    await ProductSchema.updateOne(
-      { _id: request.body.id },
+    if (request.body.category) {
+      const category = await CategorySchema.findById(request.body.category);
+      if (!category) throw new Error("Invalid category");
+    }
+    let data = await ProductSchema.updateOne(
+      {
+        _id: request.body.id,
+      },
       {
         $set: {
           title: request.body.title,
@@ -77,6 +81,16 @@ module.exports.UpdateProduct = async (request, response, next) => {
         },
       }
     );
+    /*
+    if (!data.matchedCount) {
+      let error = new Error();
+      error.status = 404;
+      error.message = "product Not found";
+      throw error;
+    } else {
+      response.status(200).json({ data });
+    }*/
+    response.status(200).json({ data });
   } catch (error) {
     next(error);
   }

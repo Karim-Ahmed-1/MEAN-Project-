@@ -33,8 +33,9 @@ ProductRoute.get(
 );
 
 ProductRoute.get(
-  "/products/featured/:count",
+  "/Featured/:count",
   authorization.checkAdmin,
+  productValidation.getFeatureValidation,
   checkValidations,
   controller.getFeatured
 );

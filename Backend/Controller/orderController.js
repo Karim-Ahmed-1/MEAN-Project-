@@ -60,7 +60,6 @@ module.exports.addOrder = (request, response, next) => {
 
   const totalPrice = totalPrices.reduce((a, b) => a + b, 0);
   //////////////////////////////////change///////////
-
   console.log(totalPrice);
   let orderObject = new OrderSchema({
     orderItems: orderItemsIds,
