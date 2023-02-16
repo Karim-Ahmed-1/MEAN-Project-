@@ -18,7 +18,12 @@ import { RegisterPageComponent } from './components/register-page/register-page.
 
 const routes:Routes=[
   {path:'login',component:LoginPageComponent},
-  {path:'register',component:RegisterPageComponent}
+  {path:'register',component:RegisterPageComponent},
+  {path:'',component:HomeComponent},
+  {path:'home',component:HomeComponent},
+  {path:'cart',component:CartComponent},
+  {path:'products',component:ProductsCategoriesComponent},
+  {path:'products/:product',component:ProductDetailsComponent},
 ]
 @NgModule({
   declarations: [
@@ -33,7 +38,7 @@ const routes:Routes=[
     ProductDetailsComponent
   ],
   imports: [
-    FormsModule, 
+    FormsModule,
     ReactiveFormsModule ,
     BrowserModule,
     RouterModule.forRoot(routes)
