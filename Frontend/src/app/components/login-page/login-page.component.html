@@ -1,1 +1,39 @@
-<p>login-page works!</p>
+<div class="bg-light p-5">
+    <h2 class="text-center bg-warning-p-2 rounded mb-4">
+        User Form
+    </h2>
+    <div class="container ">
+        <form [formGroup]="userForm" (ngSubmit)="login($event)">
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Username</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter Your Username"
+                    aria-describedby="emailHelp" formControlName="username">
+                <ng-container *ngIf="getusername.touched">
+                    <div *ngIf="getusername.hasError('required')" id="emailHelp" class="form-text text-danger">
+                        Username is Required
+                    </div>
+                </ng-container>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input type="password" class="form-control" placeholder="Enter Your Password" id="exampleInputPassword1"
+                    formControlName="password">
+                <ng-container *ngIf="getPassword.touched">
+                    <div *ngIf="getPassword.hasError('required')" id="passwordHelp" class="form-text text-danger">
+                        Password is Required
+                    </div>
+                    <div *ngIf="getPassword.hasError('minlength')" id="passwordHelp" class="form-text text-danger">
+                        Password is too small
+                    </div>
+                </ng-container>
+            </div>
+            <div class="register">
+                New user? &nbsp;
+                <a routerLink="/register">
+                    Register here
+                </a>
+            </div>
+            <button type="submit" class="btn btn-primary mt-3 p-2">Login</button>
+        </form>
+    </div>
+</div>

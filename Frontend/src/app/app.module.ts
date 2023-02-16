@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import {  FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes,RouterModule } from '@angular/router';
 
+
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SliderComponent } from './components/slider/slider.component';
@@ -12,10 +13,12 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ProductsCategoriesComponent } from './components/products-categories/products-categories.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { LoginPageComponent } from './components/login-page/login-page.component';
+import { RegisterPageComponent } from './components/register-page/register-page.component';
 
 
 const routes:Routes=[
-  {path:'login',component:LoginPageComponent}
+  {path:'login',component:LoginPageComponent},
+  {path:'register',component:RegisterPageComponent}
 ]
 @NgModule({
   declarations: [
@@ -25,6 +28,7 @@ const routes:Routes=[
     HomeComponent,
     CartComponent,
     FooterComponent,
+    LoginPageComponent,
     ProductsCategoriesComponent,
     ProductDetailsComponent
   ],
