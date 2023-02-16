@@ -6,9 +6,9 @@ const productValidation = require("./../core/validations/productValidations");
 
 const ProductRoute = express.Router();
 ProductRoute.route("/products")
-  .all(authorization.checkAdmin)
   .get(controller.getAllProducts)
   .post(
+    authorization.checkAdmin,
     productValidation.addProductValidation,
     checkValidations,
     controller.addProduct

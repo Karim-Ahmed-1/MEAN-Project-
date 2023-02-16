@@ -8,7 +8,9 @@ const autthenticationRoute = require("./Routes/authenticationRoute");
 
 const categoryRoute = require("./Routes/categoryRoute");
 const productRoute = require("./Routes/productRoute");
+const allProductsRoute = require("./Routes/allProductsRoute");
 const orderRoute = require("./Routes/orderRoute");
+const cartRoute = require("./Routes/cartRoute");
 const authorization = require("./core/Authroization/authorization");
 
 const server = express();
@@ -22,7 +24,7 @@ mongoose.get("strictQuery", true);
 mongoose
   .connect(process.env.DB_URL)
   .then(() => {
-    console.log("conenct");
+    console.log("conncet");
     server.listen(port, () => {});
   })
   .catch((error) => {
@@ -31,11 +33,13 @@ mongoose
 
 server.use(morgan("tiny"));
 server.use(express.json());
+server.use(allProductsRoute);
 server.use(autthenticationRoute);
 server.use(authorization);
+server.use(productRoute);
 server.use(userRoute);
 server.use(categoryRoute);
-server.use(productRoute);
+server.use(cartRoute);
 //server.use(orderRoute);
 
 server.use((request, response, next) => {
