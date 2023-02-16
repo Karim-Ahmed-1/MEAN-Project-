@@ -1,0 +1,49 @@
+<app-slider></app-slider>
+<div class="container-fluid d-flex justify-content-center flex-wrap services p-5">
+  <div class="card m-3 p-3 text-center bg-light border-0">
+    <div class="card-text"><i class="fa-solid fa-bag-shopping fa-xl"></i></div>
+    <div class="card-title p-3"><p>Easy to See Products <br> and Create your Order Online</p></div>
+  </div>
+  <div class="card m-3 p-3 text-center bg-light border-0 ">
+    <div class="card-text"><i class="fa-regular fa-clock fa-xl"></i></div>
+    <div class="card-title p-3 "><p>Always Available Any Time <br> At your service 24/7</p></div>
+  </div>
+  <div class="card m-3 p-3 text-center bg-light border-0">
+    <div class="card-text"><i class="fa-solid fa-truck-fast fa-xl"></i></div>
+    <div class="card-title p-3"><p>Free and Fast Shipping <br> All over Egypt</p></div>
+  </div>
+</div>
+<div class="container p-5">
+  <h1 class="mt-5 header"> Trending This Week  </h1>
+  <hr>
+  <div class="d-flex justify-content-center flex-wrap" >
+    <div class=" m-3 text-center" *ngFor="let product of trends">
+      <img [src]="product.src" class="productPic">
+      <h5 class="proName mt-5">{{product.name}}</h5>
+      <p class="section">{{product.section}}</p>
+      <span class="price">{{product.price}} <del> {{product.disc}}</del></span>
+    </div>
+  </div>
+</div>
+<div class="content text-center text-light p-5 pt-3">
+  <div class="container pt-5">
+    <h2>What We Do</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam cupiditate veritatis tenetur, nemo dolores ut iusto voluptatibus tempore quas rerum vero architecto labore similique voluptate recusandae voluptas ullam nulla repellendus sed! Velit eius cumque dolorem dolorum soluta, voluptate, inventore eos placeat ex a pariatur, aperiam laudantium debitis recusandae consectetur vero nam? Nesciunt, dignissimos velit veritatis reiciendis illum labore minus molestiae nisi quibusdam explicabo, officia quaerat iure nemo tempora molestias similique at obcaecati eaque, facilis incidunt sequi? Recusandae magnam veritatis doloribus sint neque consectetur similique sed, commodi id delectus. Accusamus hic accusantium soluta ullam laborum illo nobis asperiores dicta cumque quas aliquam aut debitis in quam, ratione magnam laudantium rem, itaque architecto, odit quos sed? Laboriosam rem consectetur architecto soluta ducimus quos, dicta, harum dolorem doloribus quibusdam incidunt asperiores, corrupti sint nihil! A impedit nihil saepe vero eveniet perferendis, molestiae dolores quas facilis quo quis perspiciatis, ipsam doloribus deserunt repellat laboriosam molestias sit fugiat nam laborum? Maiores quaerat facere magni non commodi ullam, consequuntur voluptatum harum, alias reiciendis vero ipsa dolor sapiente tempore quae. Debitis doloribus nihil ut ex culpa quisquam quos accusantium sunt laborum libero quibusdam voluptas quidem aliquam ipsam atque ipsum ratione, earum consequatur nam dolore! Rerum, numquam consectetur?</p>
+  </div>
+</div>
+<div class="container">
+  <div class="mayLike">
+    <h1 class="header text-center m-5"> You May Also Like  </h1>
+    <div class="d-flex justify-content-center flex-wrap">
+      <div class="text-center m-2" *ngFor="let product of likes">
+        <img [src]="product.src" class="likePro">
+        <h5 class="proName mt-5">{{product.name}}</h5>
+        <p class="section">{{product.section}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
