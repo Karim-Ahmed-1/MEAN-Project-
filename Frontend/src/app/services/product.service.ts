@@ -11,7 +11,7 @@ export class ProductService {
     getAllProducts(){
       return this.client.get(`${this.URL}/products`)
     }
-    getFeaturedProducts(count:any){
-      return this.client.get(`${this.URL}/Featured/${count}`)
+    getFeaturedProducts(){
+      return this.client.get(`${this.URL}/Featured/`)
     }
 }

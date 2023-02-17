@@ -2,7 +2,7 @@
 <div class="container my-5">
     <div class="d-flex justify-content-center flex-wrap">
       <div class="text-center m-2" *ngFor="let category of categories">
-        <img [src]="category.icon" class="category " width="200" height="200">
+        <img [src]="category.icon" class="category " width="150" height="150">
         <h5 class="proName mt-3">{{category.name}}</h5>
       </div>
   </div>
@@ -21,11 +21,10 @@
   <h1 class="mt-5 header"> Trending This Week  </h1>
   <hr>
   <div class="d-flex justify-content-center flex-wrap" >
-    <div class=" m-3 text-center bg-light position-relative" *ngFor="let product of trends">
-      <img [src]="product.src" class="productPic" width="300px">
-      <h5 class="proName mt-3">{{product.name}}</h5>
-      <p class="section">{{product.section}}</p>
-      <p class="price">{{product.price}}</p>
+    <div class=" m-3 text-center bg-light position-relative" style="width:300px" *ngFor="let product of featured">
+      <img [src]="product.image" class="productPic" width="300px">
+      <h5 class="proName mt-3">{{product.title}}</h5>
+      <p class="price">{{product.price}} L.E</p>
       <button class="btn btn-primary rounded-pill mb-3">Add to Cart </button>
       <span class="new p-1">New</span>
     </div>

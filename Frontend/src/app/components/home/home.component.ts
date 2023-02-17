@@ -10,22 +10,17 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class HomeComponent implements OnInit{
   categories:any
+  featured:any
   constructor (private productService:ProductService,private categoryService:CateegoryService) {
   }
   ngOnInit():void{
     this.categoryService.getAllCategories().subscribe((res)=>{
       this.categories=res
     })
-    this.productService.getFeaturedProducts(6).subscribe((res)=>{
-
+    this.productService.getFeaturedProducts().subscribe((res)=>{
+      this.featured=res
+      this.featured=this.featured.Products
+      console.log(this.featured)
     })
   }
-  trends:{src:String,name:String,section:String,price:String,disc:String}[]=[
-    {src:'assets/1.png',name:'White Top',section:'Casual-Woman',price:'$124',disc:'$170'},
-    {src:'assets/2.png',name:'Cashmere Tank +Bag ',section:'lather - Bags ',price:'$12',disc:'$170'},
-    {src:'assets/3.png',name:'White Top',section:'Casual-Woman',price:'$124',disc:'$170'},
-    {src:'assets/1.png',name:'Cashmere Tank +Bag ',section:'lather - Bags ',price:'$12',disc:'$170'},
-    {src:'assets/2.png',name:'White Top',section:'Casual-Woman',price:'$124',disc:'$170'},
-    {src:'assets/3.png',name:'Cashmere Tank +Bag ',section:'lather - Bags ',price:'$12',disc:'$170'}
-  ]
 }

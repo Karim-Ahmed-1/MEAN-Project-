@@ -6,8 +6,6 @@ const productValidation = require("./../core/validations/productValidations");
 const allProductsRoute = express.Router();
 allProductsRoute.route("/allproducts")
   .get(controller.getAllProducts)
-
-
   allProductsRoute.get(
     "/Featured/",
     controller.getFeatured
