@@ -32,12 +32,12 @@ ProductRoute.get(
   controller.getProductById
 );
 
-ProductRoute.get(
-  "/Featured/:count",
-  authorization.checkAdmin,
-  productValidation.getFeatureValidation,
-  checkValidations,
-  controller.getFeatured
-);
+// ProductRoute.get(
+//   "/Featured/:count",
+//   authorization.checkAdmin,
+//   productValidation.getFeatureValidation,
+//   checkValidations,
+//   controller.getFeatured
+// );
 
 module.exports = ProductRoute;
