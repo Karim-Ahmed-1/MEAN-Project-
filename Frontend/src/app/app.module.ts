@@ -26,6 +26,7 @@ const routes:Routes=[
   {path:'cart',component:CartComponent},
   {path:'products',component:ProductsCategoriesComponent},
   {path:'products/:product',component:ProductDetailsComponent},
+ // {path:'**',component:ProductsCategoriesComponent},
 ]
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ const routes:Routes=[
     CartComponent,
     FooterComponent,
     LoginPageComponent,
+    RegisterPageComponent,
     ProductsCategoriesComponent,
     ProductDetailsComponent,
     ProductComponent,
@@ -46,6 +48,7 @@ const routes:Routes=[
     HttpClientModule, 
     ReactiveFormsModule ,
     BrowserModule,
+    HttpClientModule,
     RouterModule.forRoot(routes)
   ],
   providers: [],
