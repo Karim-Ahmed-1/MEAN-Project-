@@ -14,4 +14,10 @@ export class ProductService {
     getFeaturedProducts(){
       return this.client.get(`${this.URL}/Featured/`)
     }
+//
+    getProductswithCategoryID(id:any)
+    {
+      return this.client.get(`${this.URL}/products/${id}`)
+    }
+
 }

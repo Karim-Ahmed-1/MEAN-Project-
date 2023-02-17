@@ -7,7 +7,6 @@ import { HttpClient } from '@angular/common/http';
 export class CateegoryService {
 
   ARIUrl:string="http://localhost:8080/categories"
- // usersdata:User[]=[];
   constructor(public http:HttpClient) {
   }
   getAllCategories()

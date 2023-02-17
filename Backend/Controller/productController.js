@@ -117,3 +117,15 @@ module.exports.getFeatured = async (request, response, next) => {
     next(error);
   }
 };
+
+module.exports.getProductswithCategoryID = (request, response, next) => {
+  ProductSchema.find({ category: request.params.categoryid })
+    .populate("category")
+    .then((data) => {
+      if (data == null) throw new Error("Product doesn't exist");
+      else response.status(200).json(data );
+    })
+    .catch((error) => {
+      next(error);
+    });
+};

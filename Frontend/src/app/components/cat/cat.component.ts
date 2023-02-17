@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-cat',
@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./cat.component.css']
 })
 export class CatComponent {
+@Input() childcategories:any;
 
+@Output() myEventID=new EventEmitter();
+SendID(categoryid:any)
+{
+  this.myEventID.emit(categoryid);
+}
 }
