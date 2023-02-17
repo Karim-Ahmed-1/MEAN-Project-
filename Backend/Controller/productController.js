@@ -108,9 +108,9 @@ module.exports.deleteProduct = (request, response, next) => {
 
 module.exports.getFeatured = async (request, response, next) => {
   try {
-    const count = request.params.count ? request.params.count : 0;
+    //const count = request.params.count ? request.params.count : 6;
     const Products = await ProductSchema.find({ isFeatured: true }).limit(
-      +count
+      6
     );
     response.status(200).json({ Products });
   } catch (error) {
