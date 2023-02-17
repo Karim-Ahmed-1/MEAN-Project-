@@ -3,23 +3,34 @@
   <h2 style=" margin-bottom: 20px; margin-top: 30px;" class="title"> Categories </h2>
   <div class="row px-xl-5 pb-3 my-5">
 
+      <!-- <app-cat class="col-lg-3 col-md-4 col-sm-6 pb-1 prd_click" ></app-cat>
       <app-cat class="col-lg-3 col-md-4 col-sm-6 pb-1 prd_click" ></app-cat>
       <app-cat class="col-lg-3 col-md-4 col-sm-6 pb-1 prd_click" ></app-cat>
-      <app-cat class="col-lg-3 col-md-4 col-sm-6 pb-1 prd_click" ></app-cat>
-      <app-cat class="col-lg-3 col-md-4 col-sm-6 pb-1 prd_click" ></app-cat>
+      <app-cat class="col-lg-3 col-md-4 col-sm-6 pb-1 prd_click" ></app-cat> -->
 
+      <div class="col-lg-3 col-md-4 col-sm-6 pb-1 prd_click" *ngFor="let category of categories">
+          <div class="cat-item d-flex align-items-center ">
+            <div class="overflow-hidden p-1" style="width: 100px; height: 100px;">
+                <img class="img-fluid cat_img " src="https://images.pexels.com/photos/675920/pexels-photo-675920.jpeg">
+            </div>
+            <div class="flex-fill pl-3 ps-5">
+                <h4>{{category.name}}</h4>
+            </div> 
+        </div>
+      </div>
+                  
   </div>
   <div class="row  px-xl-5 my-5">
 
      <!-- <app-product class="col-lg-3 col-md-4 col-sm-6 pb-1 " *ngFor="let product of products " [myProduct]="product"></app-product> -->
-      <app-product  class="col-lg-3 col-md-4 col-sm-6 pb-1"></app-product>
+      <app-product  class="col-lg-3 col-md-4 col-sm-6 pb-1" *ngFor="let category of categories"></app-product>
+      <!-- <app-product  class="col-lg-3 col-md-4 col-sm-6 pb-1" ></app-product>
       <app-product  class="col-lg-3 col-md-4 col-sm-6 pb-1" ></app-product>
       <app-product  class="col-lg-3 col-md-4 col-sm-6 pb-1" ></app-product>
       <app-product  class="col-lg-3 col-md-4 col-sm-6 pb-1" ></app-product>
       <app-product  class="col-lg-3 col-md-4 col-sm-6 pb-1" ></app-product>
       <app-product  class="col-lg-3 col-md-4 col-sm-6 pb-1" ></app-product>
-      <app-product  class="col-lg-3 col-md-4 col-sm-6 pb-1" ></app-product>
-      <app-product  class="col-lg-3 col-md-4 col-sm-6 pb-1" ></app-product>
+      <app-product  class="col-lg-3 col-md-4 col-sm-6 pb-1" ></app-product> -->
 
   </div>
 </div>
