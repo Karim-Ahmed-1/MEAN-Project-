@@ -1,4 +1,4 @@
-import { CategoryService } from './../../services/category.service';
+import { CateegoryService } from './../../services/cateegory.service';
 import { Component,OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -10,16 +10,14 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class HomeComponent implements OnInit{
   categories:any
-  constructor (private productService:ProductService,private categoryService:CategoryService) {
+  constructor (private productService:ProductService,private categoryService:CateegoryService) {
   }
   ngOnInit():void{
     this.categoryService.getAllCategories().subscribe((res)=>{
-
-      console.log(res)
+      this.categories=res
     })
     this.productService.getFeaturedProducts(6).subscribe((res)=>{
 
-      console.log(res)
     })
   }
   trends:{src:String,name:String,section:String,price:String,disc:String}[]=[

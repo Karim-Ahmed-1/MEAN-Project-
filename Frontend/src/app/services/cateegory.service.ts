@@ -9,8 +9,7 @@ export class CateegoryService {
   ARIUrl:string="http://localhost:8080/categories"
  // usersdata:User[]=[];
   constructor(public http:HttpClient) {
-    
-   }
+  }
   getAllCategories()
   {
     return this.http.get(this.ARIUrl)
