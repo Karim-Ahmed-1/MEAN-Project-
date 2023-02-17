@@ -16,7 +16,7 @@ import { LoginPageComponent } from './components/login-page/login-page.component
 import { RegisterPageComponent } from './components/register-page/register-page.component';
 import { ProductComponent } from './components/product/product.component';
 import { CatComponent } from './components/cat/cat.component';
-
+import { HttpClientModule } from '@angular/common/http';
 
 const routes:Routes=[
   {path:'login',component:LoginPageComponent},
@@ -43,6 +43,7 @@ const routes:Routes=[
   ],
   imports: [
     FormsModule,
+    HttpClientModule, 
     ReactiveFormsModule ,
     BrowserModule,
     RouterModule.forRoot(routes)

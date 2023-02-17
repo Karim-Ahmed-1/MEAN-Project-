@@ -38,4 +38,9 @@ export class CartComponent {
     this.items=this.items.filter((item,i)=>index!=i)
     this.calTotal()
   }
+  updateQuantity(e:any,i:any){
+    this.items[i].quantity=e.target.value
+    console.log(e.target)
+    this.calTotal()
+  }
 }
