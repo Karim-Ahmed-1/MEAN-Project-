@@ -45,6 +45,7 @@ const routes:Routes=[
   ],
   imports: [
     FormsModule,
+    HttpClientModule, 
     ReactiveFormsModule ,
     BrowserModule,
     HttpClientModule,
