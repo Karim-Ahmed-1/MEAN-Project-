@@ -37,6 +37,7 @@ const routes:Routes=[
     CartComponent,
     FooterComponent,
     LoginPageComponent,
+    RegisterPageComponent,
     ProductsCategoriesComponent,
     ProductDetailsComponent,
     ProductComponent,
