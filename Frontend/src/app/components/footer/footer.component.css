@@ -104,3 +104,16 @@ ul {
 		width: 100%;
 	}
 }
+
+.top-btn {
+	position: fixed;
+	bottom: 50px;
+	right: 50px;
+	font-size: 12px;
+	text-align: center;
+	border-radius: 5px;
+	outline: none;
+	z-index: 99 !important;
+	cursor: pointer;
+	border: none;
+}

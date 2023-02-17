@@ -37,6 +37,10 @@
           <a href="#"><i class="fab fa-instagram"></i></a>
           <a href="#"><i class="fab fa-linkedin-in"></i></a>
         </div>
+        <button *ngIf="showBtn$ | async" class="top-btn" (click)="gotoTop()">
+          <img src="https://ps.w.org/back-to-the-top-button/assets/icon-256x256.png?rev=2283756"
+            style="width: 60px; height: 60px; border: none;" alt="">
+        </button>
       </div>
     </div>
   </div>
