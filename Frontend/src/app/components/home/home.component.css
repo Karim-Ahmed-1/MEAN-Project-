@@ -1,3 +1,9 @@
+.category{
+  border-radius: 50%;
+}
+.category:hover {
+  transform: scale(1.1);
+}
 .header{
   font-family: Raleway;
   color:#06283D;
@@ -14,20 +20,13 @@ del{
 .productPic {
   transition: transform .7s;
 }
+
 .productPic:hover {
   transform: scale(1.1);
 }
 .content{
-  background-color: #06283D;
+  background-color: #4da0d4;
   font-family:Raleway;
-}
-.likePro {
-  transition: transform .7s;
-}
-
-.likePro:hover {
-  transform: scale(.9);
-  border-radius: 50%;
 }
 .services
 {
