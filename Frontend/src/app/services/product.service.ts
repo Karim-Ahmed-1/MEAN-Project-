@@ -19,5 +19,8 @@ export class ProductService {
     {
       return this.client.get(`${this.URL}/products/${id}`)
     }
+    getProductDetailsById(id:any){
+      return this.client.get(`${this.URL}/products/${id}`)
+    }
 
 }

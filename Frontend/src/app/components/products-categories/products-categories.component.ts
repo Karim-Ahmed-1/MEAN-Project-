@@ -13,18 +13,18 @@ export class ProductsCategoriesComponent implements OnInit {
   productsofCategory:any;
   constructor(public categoryservice:CateegoryService,public productservice:ProductService){}
 
-ngOnInit(): void { 
+ngOnInit(): void {
   this.categoryservice.getAllCategories().subscribe((response)=>{
     this.categories=response;
     this.ShowProducts(this.categories[0]?._id)
-   })
+  })
 }
 
 ShowProducts(id:any)
 {
   this.productservice.getProductswithCategoryID(id).subscribe((response)=>{
     this.productsofCategory=response;
-   })
+  })
 }
 
 //Get id from component cat(child)

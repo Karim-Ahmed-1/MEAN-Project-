@@ -27,7 +27,7 @@ const routes:Routes=[
   {path:'home',component:HomeComponent},
   {path:'cart',component:CartComponent},
   {path:'products',component:ProductsCategoriesComponent},
-  {path:'products/:product',component:ProductDetailsComponent},
+  {path:'product/:id',component:ProductDetailsComponent},
  // {path:'**',component:ProductsCategoriesComponent},
 ]
 @NgModule({
@@ -48,7 +48,7 @@ const routes:Routes=[
   ],
   imports: [
     FormsModule,
-    HttpClientModule, 
+    HttpClientModule,
     ReactiveFormsModule ,
     BrowserModule,
     HttpClientModule,

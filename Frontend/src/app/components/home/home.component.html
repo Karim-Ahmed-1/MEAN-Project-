@@ -21,8 +21,8 @@
   <h1 class="mt-5 header"> Trending This Week  </h1>
   <hr>
   <div class="d-flex justify-content-center flex-wrap" >
-    <div class=" m-3 text-center bg-light position-relative" style="width:300px" *ngFor="let product of featured">
-      <img [src]="product.image" class="productPic" width="300px">
+    <div class=" m-3 text-center bg-light position-relative" style="width:300px" *ngFor="let product of featured" >
+      <img [src]="product.image" class="productPic" width="300px" routerLink="/product/{{product._id}}">
       <h5 class="proName mt-3">{{product.title}}</h5>
       <p class="price">{{product.price}} L.E</p>
       <button class="btn btn-primary rounded-pill mb-3" (click)="addToCart(product)">Add to Cart </button>
