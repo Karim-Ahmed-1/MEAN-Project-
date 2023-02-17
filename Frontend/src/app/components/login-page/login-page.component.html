@@ -33,7 +33,7 @@
                     </div>
                     <div style="display: flex; justify-content: space-between;">
 
-                        <button type="submit" class="btn btn-primary mt-3 p-2" style="width: 85px;">Login</button>
+                        <button type="submit" class="btn btn-primary mt-3 p-2" style="width: 85px;" [disabled]="!userForm.valid">Login</button>
                         <div class="register mt-4" style="margin-left: 15px;">
                             New user?&nbsp;
                             <a routerLink="/register">

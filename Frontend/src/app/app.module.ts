@@ -17,10 +17,12 @@ import { RegisterPageComponent } from './components/register-page/register-page.
 import { ProductComponent } from './components/product/product.component';
 import { CatComponent } from './components/cat/cat.component';
 import { HttpClientModule } from '@angular/common/http';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 const routes:Routes=[
   {path:'login',component:LoginPageComponent},
   {path:'register',component:RegisterPageComponent},
+  {path:'dashboard',component:DashboardComponent},
   {path:'',component:HomeComponent},
   {path:'home',component:HomeComponent},
   {path:'cart',component:CartComponent},
@@ -41,7 +43,8 @@ const routes:Routes=[
     ProductsCategoriesComponent,
     ProductDetailsComponent,
     ProductComponent,
-    CatComponent
+    CatComponent,
+    DashboardComponent
   ],
   imports: [
     FormsModule,
