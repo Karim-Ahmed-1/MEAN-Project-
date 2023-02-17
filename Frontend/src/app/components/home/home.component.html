@@ -21,11 +21,13 @@
   <h1 class="mt-5 header"> Trending This Week  </h1>
   <hr>
   <div class="d-flex justify-content-center flex-wrap" >
-    <div class=" m-3 text-center" *ngFor="let product of trends">
-      <img [src]="product.src" class="productPic">
-      <h5 class="proName mt-5">{{product.name}}</h5>
+    <div class=" m-3 text-center bg-light position-relative" *ngFor="let product of trends">
+      <img [src]="product.src" class="productPic" width="300px">
+      <h5 class="proName mt-3">{{product.name}}</h5>
       <p class="section">{{product.section}}</p>
-      <span class="price">{{product.price}} <del> {{product.disc}}</del></span>
+      <p class="price">{{product.price}}</p>
+      <button class="btn btn-primary rounded-pill mb-3">Add to Cart </button>
+      <span class="new p-1">New</span>
     </div>
   </div>
 </div>

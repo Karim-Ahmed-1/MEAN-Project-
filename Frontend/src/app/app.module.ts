@@ -14,6 +14,8 @@ import { ProductsCategoriesComponent } from './components/products-categories/pr
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { RegisterPageComponent } from './components/register-page/register-page.component';
+import { ProductComponent } from './components/product/product.component';
+import { CatComponent } from './components/cat/cat.component';
 
 
 const routes:Routes=[
@@ -35,7 +37,9 @@ const routes:Routes=[
     FooterComponent,
     LoginPageComponent,
     ProductsCategoriesComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    ProductComponent,
+    CatComponent
   ],
   imports: [
     FormsModule,

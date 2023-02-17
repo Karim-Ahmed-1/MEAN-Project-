@@ -12,6 +12,8 @@
   color: #2e3a4f;
 }
 .price{
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
   color: #256D85;
 }
 del{
@@ -35,4 +37,12 @@ del{
 }
 p{
   font-family:Raleway;
+}
+.new{
+  position: absolute;
+  top:0;
+  right: 0;
+  width: 100px;
+  background-color: rgb(205, 19, 19);
+  color:#fff
 }
