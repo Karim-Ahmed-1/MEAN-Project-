@@ -21,11 +21,14 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DashboardPageComponent } from './components/dashboard-page/dashboard-page.component';
 import { DashboardtableComponent } from './components/dashboardtable/dashboardtable.component';
 import { DashboardNavComponent } from './components/dashboard-nav/dashboard-nav.component';
+import { AdminLoginPageComponent } from './components/admin-login-page/admin-login-page.component';
 
 const routes:Routes=[
   {path:'login',component:LoginPageComponent},
   {path:'register',component:RegisterPageComponent},
+  {path:'adminlogin',component:AdminLoginPageComponent},
   {path:'dashboard',component:DashboardPageComponent},
+  {path:'dashboard/addproduct',component:DashboardComponent},
   {path:'',component:HomeComponent},
   {path:'home',component:HomeComponent},
   {path:'cart',component:CartComponent},
@@ -51,6 +54,7 @@ const routes:Routes=[
     DashboardPageComponent,
     DashboardtableComponent,
     DashboardNavComponent,
+    AdminLoginPageComponent
   ],
   imports: [
     FormsModule,

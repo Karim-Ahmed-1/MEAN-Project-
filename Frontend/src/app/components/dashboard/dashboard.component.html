@@ -1,118 +1,116 @@
-<button type="button" class="btn btn-primary" style="margin: 50px 0px 500px 100px;" data-bs-toggle="modal"
-    data-bs-target="#exampleModal2">
-    Add new product
-</button>
-
-
-<!-- Modal 2 with validation-->
-<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModal2Label" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title text-danger" id="exampleModal2Label">Add new product</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form [formGroup]="productForm" (ngSubmit)="addproduct($event)" class="mx-1 mx-md-4">
-                    <div class="d-flex flex-row align-items-center mb-4">
-                        <label class="form-label" for="form3Example1c" style="font-weight: 800;">Title:</label>
-                        <div class="form-outline flex-fill mb-0">
-                            <input type="text" style="width: 300px; margin-left: 15px;" id="form3Example1c"
-                                placeholder="Enter Your product title" class="form-control" formControlName="title" />
-                            <ng-container *ngIf="gettitle.touched">
-                                <div *ngIf="gettitle.hasError('required')" id="emailHelp" class="form-text text-danger">
-                                    title is Required
-                                </div>
-                            </ng-container>
-                        </div>
-                    </div>
-                    <div class="d-flex flex-row align-items-center mb-4">
-                        <div style="display: flex; justify-content: space-between;">
+<div class=" container-fluid">
+    <div class="row ">
+        <div class="bg-light con  px-0">
+            <app-dashboard-nav></app-dashboard-nav>
+            <div class="main">
+                <div class="main-top">
+                    <h1>Dashboard</h1>
+                    <i class="fas fa-user-cog"></i>
+                </div>
+                <div class="container-fluid">
+                    <div class="row justify-content-center my-5">
+                        <div class="col-lg-12 col-sm-12 shadow-lg  bg-white  rounded  p-5">
+                            <div class="text-uppercase fw-semibold mb-4" style="margin-left: 120px;"> New product Form</div>
                             <div style="display: flex; justify-content: space-between;">
-                                <label class="form-label" for="form3Example1c"
-                                    style="font-weight: 800;margin-top: 5px;">price:</label>
-                                <div class="form-outline flex-fill mb-0">
-                                    <input type="text" style="width: 100px; margin-left: 15px;" id="form3Example1c"
-                                        placeholder="Price" class="form-control" formControlName="price" />
-                                    <ng-container *ngIf="getprice.touched">
-                                        <div *ngIf="getprice.hasError('required')" id="emailHelp"
-                                            class="form-text text-danger">
-                                            price is Required
-                                        </div>
-                                    </ng-container>
-                                </div>
-                            </div>
-                            <div style="display: flex; justify-content: space-between; margin-left: 10px;">
-                                <label class="form-label" for="form3Example1c"
-                                    style="font-weight: 800; margin-top: 5px;">quantity:</label>
-                                <div class="form-outline flex-fill mb-0">
-                                    <input type="text" style="width: 100px; margin-left: 15px;" id="form3Example1c"
-                                        placeholder="Quantity" class="form-control" formControlName="quantity" />
-                                    <ng-container *ngIf="getquantity.touched">
-                                        <div *ngIf="getquantity.hasError('required')" id="emailHelp"
-                                            class="form-text text-danger">
-                                            quantity is Required
-                                        </div>
-                                    </ng-container>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-flex flex-row align-items-center mb-4">
-                        <label class="form-label" for="form3Example1c" style="font-weight: 800;">Categories:</label>
-                        <div class="form-outline flex-fill mb-0">
-                            <select class="form-select" style="width: 250px; margin-left: 15px;"
-                                aria-label="Default select example" formControlName="categories">
-                                <option value="One">One</option>
-                                <option value="Two">Two</option>
-                                <option value="Three">Three</option>
-                            </select>
-                            <ng-container *ngIf="getcategories.touched">
-                                <div *ngIf="getcategories.hasError('required')" id="emailHelp"
-                                    class="form-text text-danger">
-                                    category is Required
-                                </div>
-                            </ng-container>
-                        </div>
-                    </div>
-                    <div class="d-flex flex-row align-items-center mb-4">
-                        <label class="form-label" for="form3Example1c" style="font-weight: 800;">Image:</label>
-                        <div class="form-outline flex-fill mb-0">
-                            <!-- <img src="{{base64}}" style="width: 200px;" height="100px"> -->
-                            <input type="file" style="width: 290px; margin-left: 15px;" id="form3Example1c"
-                                class="form-control" formControlName="image" (change)="getImagePath($event)" />
-                            <ng-container *ngIf="getimage.touched">
-                                <div *ngIf="getimage.hasError('required')" id="emailHelp" class="form-text text-danger">
-                                    image is Required
-                                </div>
-                            </ng-container>
-                        </div>
-                    </div>
-                    <div class="d-flex flex-row align-items-center mb-4">
-                        <label class="form-label" for="form3Example1c"
-                            style="font-weight: 800; margin-top: -50px;">Description:</label>
-                        <div class="form-outline flex-fill mb-0">
-                            <textarea type="text" style="width: 250px; height: 150px; margin-left: 15px;" minlength="5"
-                                maxlength="100" id="form3Example1c" placeholder="Enter Your product Description"
-                                class="form-control" formControlName="description">
-                            </textarea>
-                            <ng-container *ngIf="getdescription.touched">
-                                <div *ngIf="getdescription.hasError('required')" id="emailHelp"
-                                    class="form-text text-danger">
-                                    Description is Required
-                                </div>
-                            </ng-container>
-                        </div>
-                    </div>
-                    <div>
-                        <button style="margin-left: 50px; width: 100px;" type="submit" class="btn btn-primary btn-md"
-                            [disabled]="!productForm.valid">Add</button>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
+                                <form [formGroup]="productForm" (ngSubmit)="addproduct($event)" style="margin-left: 40px;">
+                                    <div class="d-flex flex-row align-items-center mb-4">
+                                        <label class="form-label" for="form3Example1c" style="font-weight: 800;">Title:</label>
+                                        <div class="form-outline flex-fill mb-0">
+                                            <input type="text" style="width: 300px; margin-left: 15px;" id="form3Example1c"
+                                                placeholder="Enter Your product title" class="form-control"
+                                                formControlName="title" />
+                                            <ng-container *ngIf="gettitle.touched">
+                                                <div *ngIf="gettitle.hasError('required')" id="emailHelp" class="form-text text-danger">
+                                                    title is Required
+                                                </div>
+                                                </ng-container>
+                                                </div>
+                                                </div>
+                                                <div class="d-flex flex-row align-items-center mb-4">
+                                                    <div style="display: flex; justify-content: space-between;">
+                                                        <div style="display: flex; justify-content: space-between;">
+                                                            <label class="form-label" for="form3Example1c" style="font-weight: 800;margin-top: 5px;">price:</label>
+                                                            <div class="form-outline flex-fill mb-0">
+                                                    <input type="text" style="width: 100px; margin-left: 15px;" id="form3Example1c" placeholder="Price" class="form-control"
+                                                        formControlName="price" />
+                                                    <ng-container *ngIf="getprice.touched">
+                                                        <div *ngIf="getprice.hasError('required')" id="emailHelp" class="form-text text-danger">
+                                                            price is Required
+                                                        </div>
+                                                        </ng-container>
+                                                        </div>
+                                                        </div>
+                                                        <div style="display: flex; justify-content: space-between; margin-left: 10px;">
+                                                        <label class="form-label" for="form3Example1c" style="font-weight: 800; margin-top: 5px;">quantity:</label>
+                                                        <div class="form-outline flex-fill mb-0">
+                                                    <input type="text" style="width: 100px; margin-left: 15px;" id="form3Example1c" placeholder="Quantity"
+                                                        class="form-control" formControlName="quantity" />
+                                                    <ng-container *ngIf="getquantity.touched">
+                                                        <div *ngIf="getquantity.hasError('required')" id="emailHelp" class="form-text text-danger">
+                                                            quantity is Required
+                                                        </div>
+                                                        </ng-container>
+                                                        </div>
+                                                        </div>
+                                                        </div>
+                                                        </div>
+                                                        <div class="d-flex flex-row align-items-center mb-4">
+                                                            <label class="form-label" for="form3Example1c" style="font-weight: 800;">Categories:</label>
+                                                            <div class="form-outline flex-fill mb-0">
+                                            <select class="form-select" style="width: 250px; margin-left: 15px;" aria-label="Default select example"
+                                                formControlName="categories">
+                                                <option value="One">One</option>
+                                                <option value="Two">Two</option>
+                                                <option value="Three">Three</option>
+                                            </select>
+                                            <ng-container *ngIf="getcategories.touched">
+                                                <div *ngIf="getcategories.hasError('required')" id="emailHelp" class="form-text text-danger">
+                                                    category is Required
+                                                </div>
+                                                </ng-container>
+                                                </div>
+                                                </div>
+                                                <div class="d-flex flex-row align-items-center mb-4">
+                                                    <label class="form-label" for="form3Example1c" style="font-weight: 800;">Image:</label>
+                                                    <div class="form-outline flex-fill mb-0">
+                                                        <!-- <img src="{{base64}}" style="width: 200px;" height="100px"> -->
+                                                        <input type="file" style="width: 290px; margin-left: 15px;" id="form3Example1c"
+                                                class="form-control" formControlName="image"
+                                                (change)="getImagePath($event)" />
+                                            <ng-container *ngIf="getimage.touched">
+                                                <div *ngIf="getimage.hasError('required')" id="emailHelp" class="form-text text-danger">
+                                                    image is Required
+                                                </div>
+                                                </ng-container>
+                                                </div>
+                                                </div>
+                                                <div class="d-flex flex-row align-items-center mb-4">
+                                                    <label class="form-label" for="form3Example1c" style="font-weight: 800; margin-top: -50px;">Description:</label>
+                                                    <div class="form-outline flex-fill mb-0">
+                                            <textarea type="text" style="width: 250px; height: 150px; margin-left: 15px;" minlength="5" maxlength="100"
+                                                id="form3Example1c" placeholder="Enter Your product Description" class="form-control" formControlName="description">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </textarea>
+                                            <ng-container *ngIf="getdescription.touched">
+                                                <div *ngIf="getdescription.hasError('required')" id="emailHelp" class="form-text text-danger">
+                                                    Description is Required
+                                                </div>
+                                                </ng-container>
+                                                </div>
+                                                </div>
+                                                <div>
+                                                    <button style="margin-left: 50px; width: 100px;" type="submit" class="btn btn-primary btn-md"
+                                                        [disabled]="!productForm.valid">Add</button>
+                                                </div>
+                                                </form>
+                                    <div>
+                                        <img style="width: 650px; height: 400px;" class="rounded"
+                                            src="https://barn2.com/wp-content/uploads/2020/12/934438_Featured-Image-for-Barn2_Op3_010421.png" alt="">
+                                    </div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
