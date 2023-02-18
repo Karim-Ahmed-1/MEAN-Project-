@@ -26,6 +26,7 @@
                                                 </ng-container>
                                                 </div>
                                                 </div>
+                                                
                                                 <div class="d-flex flex-row align-items-center mb-4">
                                                     <div style="display: flex; justify-content: space-between;">
                                                         <div style="display: flex; justify-content: space-between;">
@@ -85,9 +86,22 @@
                                                 </div>
                                                 </div>
                                                 <div class="d-flex flex-row align-items-center mb-4">
-                                                    <label class="form-label" for="form3Example1c" style="font-weight: 800; margin-top: -50px;">Description:</label>
+                                                    <label class="form-label" for="form3Example1c" style="font-weight: 800;">Description:</label>
                                                     <div class="form-outline flex-fill mb-0">
-                                            <textarea type="text" style="width: 250px; height: 150px; margin-left: 15px;" minlength="5" maxlength="100"
+                                                        <input type="text" style="width: 250px; margin-left: 15px;" id="form3Example1c" placeholder="Enter Your Description"
+                                                            class="form-control" formControlName="smallDescription" />
+                                                        <ng-container *ngIf="getsmallDescription.touched">
+                                                            <div *ngIf="getsmallDescription.hasError('required')" id="emailHelp" class="form-text text-danger">
+                                                                Description is Required
+                                                            </div>
+                                                        </ng-container>
+                                                        </div>
+                                                        </div>
+                                                        <div class="d-flex flex-row align-items-center mb-4">
+                                                            <label class="form-label" for="form3Example1c" style="font-weight: 800; margin-top: -50px;">Rich
+                                                                Description:</label>
+                                                            <div class="form-outline flex-fill mb-0">
+                                                                <textarea type="text" style="width: 210px; height: 150px; margin-left: 15px;" minlength="5" maxlength="100"
                                                 id="form3Example1c" placeholder="Enter Your product Description" class="form-control" formControlName="description">
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 </textarea>
                                             <ng-container *ngIf="getdescription.touched">
