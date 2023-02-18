@@ -15,6 +15,7 @@ export class DashboardComponent {
   description:new FormControl('',[Validators.required]),
   image:new FormControl('',[Validators.required]),
   categories:new FormControl('',[Validators.required]),
+  smallDescription:new FormControl('',[Validators.required]),
   
 });
 get gettitle(){
@@ -34,6 +35,9 @@ get getimage(){
 }
 get getcategories(){
   return this.productForm.controls["categories"];
+}
+get getsmallDescription(){
+  return this.productForm.controls["smallDescription"];
 }
 
 addproduct(e:any){
