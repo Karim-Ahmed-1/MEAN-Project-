@@ -25,10 +25,13 @@
   <hr>
   <div class="d-flex justify-content-center flex-wrap">
     <div class=" m-3 text-center bg-light position-relative" style="width:300px" *ngFor="let product of featured">
-      <img [src]="product.image" class="productPic" width="300px" routerLink="/product/{{product._id}}">
+      <img [src]="product.image" class="productPic" width="300px">
       <h5 class="proName mt-3">{{product.title}}</h5>
       <p class="price">{{product.price}} L.E</p>
-      <button class="btn btn-primary rounded-pill mb-3" (click)="addToCart(product)">Add to Cart </button>
+      <div class="d-flex flex-wrap justify-content-center mb-4">
+        <button class="btn btn-solid rounded-pill  mx-1" (click)="addToCart(product)">Add to Cart </button>
+        <button class="btn btn-reverse rounded-pill  mx-1 " routerLink="/product/{{product._id}}">View Details </button>
+      </div>
       <span class="new p-1">New</span>
     </div>
   </div>
