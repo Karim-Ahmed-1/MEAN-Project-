@@ -1,3 +1,5 @@
+import { CartService } from 'src/app/services/cart.service';
+import { CartComponent } from './../cart/cart.component';
 import { ProductService } from 'src/app/services/product.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -9,7 +11,8 @@ import { ActivatedRoute } from '@angular/router';
 export class ProductDetailsComponent implements OnInit {
   productId:any
   product:any
-constructor(private activeRoute:ActivatedRoute,private productService:ProductService){
+  nItems:any
+constructor(private cartService:CartService,private activeRoute:ActivatedRoute,private productService:ProductService){
   this.productId=this.activeRoute.snapshot.params['id'];
 
 }
@@ -18,5 +21,11 @@ constructor(private activeRoute:ActivatedRoute,private productService:ProductSer
       this.product=res
       console.log(this.product)
     })
+    this.nItems=this.cartService.countItems()
+  }
+  addToCart(product:any){
+    product.itemQuantity=1
+    this.cartService.addToCart(product);
+    this.nItems=this.cartService.countItems()
   }
 }

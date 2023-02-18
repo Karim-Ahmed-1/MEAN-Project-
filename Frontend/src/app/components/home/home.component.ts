@@ -12,11 +12,13 @@ import { Product } from '../../models/products';
 export class HomeComponent implements OnInit{
   categories:any
   featured:any
+  nItems:any
   constructor (private productService:ProductService,private categoryService:CateegoryService,private cartService: CartService) {
   }
   addToCart(product: Product) {
     product.itemQuantity=1
     this.cartService.addToCart(product);
+    this.nItems=this.cartService.countItems()
   }
   ngOnInit():void{
     this.categoryService.getAllCategories().subscribe((res)=>{
@@ -26,6 +28,6 @@ export class HomeComponent implements OnInit{
       this.featured=res
       this.featured=this.featured.Products
     })
-
+    this.nItems=this.cartService.countItems()
   }
 }
