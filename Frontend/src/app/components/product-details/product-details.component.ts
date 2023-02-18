@@ -10,7 +10,7 @@ export class ProductDetailsComponent implements OnInit {
   productId:any
   product:any
 constructor(private activeRoute:ActivatedRoute,private productService:ProductService){
-  this.productId=this.activeRoute.snapshot.params['id'];
+  this.productId=this.activeRoute.snapshot.params['productid'];
 
 }
   ngOnInit(): void {

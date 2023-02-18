@@ -20,7 +20,7 @@ module.exports.getAllProducts = (request, response, next) => {
 };
 
 module.exports.getProductById = (request, response, next) => {
-  ProductSchema.findOne({ _id: request.params.id })
+  ProductSchema.findOne({ _id: request.params.productid })
     .populate("category")
     .then((data) => {
       if (data == null) throw new Error("Product doesn't exist");
