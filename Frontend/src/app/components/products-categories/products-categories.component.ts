@@ -14,7 +14,7 @@ export class ProductsCategoriesComponent implements OnInit {
   nItems:any
   categories:any;
   productsofCategory:any;
-  constructor(public categoryservice:CateegoryService,public productservice:ProductService){}
+  constructor(public categoryservice:CateegoryService,public productservice:ProductService,public cartService:CartService){}
 
 ngOnInit(): void {
   this.categoryservice.getAllCategories().subscribe((response)=>{

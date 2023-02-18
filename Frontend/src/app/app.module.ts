@@ -21,11 +21,9 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DashboardPageComponent } from './components/dashboard-page/dashboard-page.component';
 import { DashboardtableComponent } from './components/dashboardtable/dashboardtable.component';
 import { DashboardNavComponent } from './components/dashboard-nav/dashboard-nav.component';
-<<<<<<< HEAD
-import { CookieModule } from 'ngx-cookie';
-=======
+
 import { AdminLoginPageComponent } from './components/admin-login-page/admin-login-page.component';
->>>>>>> dfa64920e8eab402ca2444c78e337571f947773f
+
 
 const routes:Routes=[
   {path:'login',component:LoginPageComponent},
@@ -65,7 +63,6 @@ const routes:Routes=[
     HttpClientModule,
     ReactiveFormsModule ,
     BrowserModule,
-    CookieModule,
     HttpClientModule,
     RouterModule.forRoot(routes)
   ],
