@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup} from '@angular/forms';
+import { ProductService } from 'src/app/services/product.service';
+
+
 
 @Component({
   selector: 'app-dashboardtable',
@@ -6,5 +10,38 @@ import { Component } from '@angular/core';
   styleUrls: ['./dashboardtable.component.css']
 })
 export class DashboardtableComponent {
+  products:any;
+  constructor (private productService:ProductService){}
+  ngOnInit():void{this.productService.getAllProducts().subscribe((res)=>{
+    this.products=res
+  }) 
+}
+
+  productForm=new FormGroup({
+    title:new FormControl('',[]),
+    price:new FormControl('',[]),
+    quantity:new FormControl('',[]),
+    description:new FormControl('',[]),
+    image:new FormControl('',[]),
+    categories:new FormControl('',[]),
+    smallDescription:new FormControl('',[]),
+  })
+  updateproduct(e:any){
+    e.preventDefault();
+    //console.log(this.productForm)
+    if(this.productForm.status=="VALID")
+      console.log(this.productForm.value)
+  }
+  base64:any;
+getImagePath(e:any){
+  //script to get base64
+    const file =e.target.files[0]
+    const reader=new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload=()=>{
+      this.base64=reader.result
+      //console.log(this.base64)
+    }
+  }
 
 }

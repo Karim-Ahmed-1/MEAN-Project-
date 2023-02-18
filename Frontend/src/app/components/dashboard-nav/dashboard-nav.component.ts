@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./dashboard-nav.component.css']
 })
 export class DashboardNavComponent {
+  flag:boolean=false;
 
 }

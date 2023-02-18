@@ -16,7 +16,13 @@ export class CartService {
     });
     if(!this.isFound){
       this.items.push(product);
+      localStorage.setItem('items','this.items')
+      localStorage.setItem('nitems','this.items.length')
     }
+
+  }
+  countItems(){
+    return this.items.length
   }
   getItems() {
     return this.items;
@@ -27,6 +33,8 @@ export class CartService {
   }
   clearCart() {
     this.items = [];
+    localStorage.setItem('items','this.items')
+    localStorage.setItem('nitems','this.items.length')
     return this.items;
   }
 }

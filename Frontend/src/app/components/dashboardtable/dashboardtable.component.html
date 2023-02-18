@@ -1,35 +1,120 @@
 <div class="container-fluid">
     <div class="row justify-content-center my-5">
-        <div class="col-lg-12 col-sm-12 shadow-lg  bg-white  rounded  p-5">
-
-            <div class="text-uppercase fw-semibold mb-4"> Product section</div>
+        <div class="col-lg-12 col-sm-12 shadow-lg bg-white rounded p-5">
+            <div class="text-uppercase fw-semibold mb-4">Product section</div>
             <table class="table">
-                <thead class="table-dark ">
+                <thead class="table-dark">
                     <tr>
-                        <th>Salary</th>
                         <th>Image</th>
-                        <th>Product</th>
-                        <th>Categorie</th>
+                        <th>Title</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Operations</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr *ngFor="let item of products">
                         <td>
-                            <img class="imageformat rounded-circle " src="assets/product-s3.webp" alt="">
+                            <img [src]="item.image" class="imageformat rounded-circle" alt="" />
                         </td>
-                        <td class=" py-4">
-                            amal
-                        </td>
+                        <td class="py-4">{{item.title}}</td>
+                        <td class="py-4">{{item.price}} L.E</td>
+                        <td class="py-4">{{item.quantity}}</td>
                         <td class="py-4">
-                            amal
-                        </td>
-                        <td class="py-4">
-                            <a class="btn btn-outline-danger rounded ">Delete</a>
-                            <a class="btn btn-outline-primary rounded  ms-2 ">Update</a>
+                            <a class="btn btn-outline-danger rounded">Delete</a>
+                            <a class="btn btn-outline-warning rounded ms-2" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                                Update
+                            </a>
                         </td>
                     </tr>
                 </tbody>
             </table>
+        </div>
+    </div>
+</div>
+<!-- Modal 2 with validation-->
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModal2Label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-danger" id="exampleModal2Label">Update product</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="productForm" (ngSubmit)="updateproduct($event)" class="mx-1 mx-md-4">
+                    <div class="d-flex flex-row align-items-center mb-4">
+                        <label class="form-label" for="form3Example1c" style="font-weight: 800;">Title:</label>
+                        <div class="form-outline flex-fill mb-0">
+                            <input type="text" style="width: 300px; margin-left: 15px;" id="form3Example1c"
+                                placeholder="Enter Your product title" class="form-control" formControlName="title" />
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row align-items-center mb-4">
+                        <div style="display: flex; justify-content: space-between;">
+                            <div style="display: flex; justify-content: space-between;">
+                                <label class="form-label" for="form3Example1c"
+                                    style="font-weight: 800;margin-top: 5px;">price:</label>
+                                <div class="form-outline flex-fill mb-0">
+                                    <input type="text" style="width: 100px; margin-left: 15px;" id="form3Example1c"
+                                        placeholder="Price" class="form-control" formControlName="price" />
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-left: 10px;">
+                                <label class="form-label" for="form3Example1c"
+                                    style="font-weight: 800; margin-top: 5px;">quantity:</label>
+                                <div class="form-outline flex-fill mb-0">
+                                    <input type="text" style="width: 100px; margin-left: 15px;" id="form3Example1c"
+                                        placeholder="Quantity" class="form-control" formControlName="quantity" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row align-items-center mb-4">
+                        <label class="form-label" for="form3Example1c" style="font-weight: 800;">Categories:</label>
+                        <div class="form-outline flex-fill mb-0">
+                            <select class="form-select" style="width: 250px; margin-left: 15px;"
+                                aria-label="Default select example" formControlName="categories">
+                                <option value="One">One</option>
+                                <option value="Two">Two</option>
+                                <option value="Three">Three</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row align-items-center mb-4">
+                        <label class="form-label" for="form3Example1c" style="font-weight: 800;">Image:</label>
+                        <div class="form-outline flex-fill mb-0">
+                            <!-- <img src="{{base64}}" style="width: 200px;" height="100px"> -->
+                            <input type="file" style="width: 290px; margin-left: 15px;" id="form3Example1c"
+                                class="form-control" formControlName="image" (change)="getImagePath($event)" />
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row align-items-center mb-4">
+                        <label class="form-label" for="form3Example1c" style="font-weight: 800;">Description:</label>
+                        <div class="form-outline flex-fill mb-0">
+                            <input type="text" style="width: 250px; margin-left: 15px;" id="form3Example1c"
+                                placeholder="Enter Your Description" class="form-control"
+                                formControlName="smallDescription" />
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row align-items-center mb-4">
+                        <label class="form-label" for="form3Example1c" style="font-weight: 800; margin-top: -50px;">Rich
+                            Description:</label>
+                        <div class="form-outline flex-fill mb-0">
+                            <textarea type="text" style="width: 210px; height: 150px; margin-left: 15px;" minlength="5"
+                                maxlength="100" id="form3Example1c" placeholder="Enter Your product Description"
+                                class="form-control" formControlName="description">
+                            </textarea>
+                        </div>
+                    </div>
+                    <div>
+                        <button style="margin-left: 50px; width: 100px;" type="submit"
+                            class="btn btn-primary btn-md">Update</button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
+            </div>
         </div>
     </div>
 </div>

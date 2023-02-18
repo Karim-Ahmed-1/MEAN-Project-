@@ -12,7 +12,7 @@ module.exports.getAllProducts = (request, response, next) => {
   ProductSchema.find(filter)
     .populate("category")
     .then((data) => {
-      response.status(200).json({ data });
+      response.status(200).json( data );
     })
     .catch((error) => {
       next(error);

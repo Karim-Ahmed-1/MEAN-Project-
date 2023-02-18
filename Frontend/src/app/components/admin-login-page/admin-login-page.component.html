@@ -1,9 +1,9 @@
 <app-navbar></app-navbar>
-<section id="contact-details" class="section-p1">
+<section id="contact-details" class="section-p1" style="margin-bottom: 150px; margin-top: 60px;">
     <div class="details">
         <div class="bg-light p-5">
             <h2 class="text-center bg-warning-p-2 rounded mb-3" style="margin-left: 110px;">
-                User Form
+                Admin Form
             </h2>
             <div class="container ">
                 <form [formGroup]="userForm" (ngSubmit)="login($event)">
@@ -33,14 +33,10 @@
                         </ng-container>
                     </div>
                     <div style="display: flex; justify-content: space-between;">
-                        <button type="submit" class="btn btn-primary mt-3 p-2" style="width: 85px;"
-                            [disabled]="!userForm.valid">Login</button>
-                        <div class="register mt-4" style="margin-left: 15px;">
-                            New user?&nbsp;
-                            <a routerLink="/register">
-                                Sign up
-                            </a>
-                        </div>
+
+                        <button type="submit" class="btn btn-primary mt-3 p-2" style="width: 85px; margin-left: auto;
+                        margin-right: auto;" [disabled]="!userForm.valid">Login</button>
+
                     </div>
                 </form>
             </div>
@@ -48,7 +44,6 @@
     </div>
     <div class="map">
         <img style="width: 500px; border-radius: 8px; margin-left:150px ; margin-top: 50px;"
-            src="https://fitsmallbusiness.com/wp-content/uploads/2017/06/15-Online-Shopping-Statistics-Ftrd32.jpg"
-            alt="">
+            src="https://empreendaecommerce.com.br/wp-content/uploads/2018/08/melhorblog-696x479.png" alt="">
     </div>
 </section>
