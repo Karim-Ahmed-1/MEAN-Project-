@@ -16,9 +16,7 @@
   font-weight: bold;
   color: #256D85;
 }
-del{
-  color: #48b5ff;
-}
+
 .productPic {
   transition: transform .7s;
 }
@@ -46,3 +44,22 @@ p{
   background-color: rgb(205, 19, 19);
   color:#fff
 }
+.btn-solid{
+  background-color:#4DA0D4;
+  color: #fff;
+}
+.btn-solid:hover{
+  color:#4DA0D4;
+  border:solid 1px #4DA0D4;
+  background-color: #fff;
+}
+.btn-reverse:hover{
+  color:#fff;
+  background-color: #4DA0D4;
+}
+.btn-reverse{
+  color:#4DA0D4;
+  border:solid 1px #4DA0D4;
+  background-color: #fff;
+}
+

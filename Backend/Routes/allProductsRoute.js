@@ -9,9 +9,17 @@ const allProductsRoute = express.Router();
 allProductsRoute.route("/products/:categoryid")
                 .get(controller.getProductswithCategoryID);
 
-allProductsRoute.route("/allproducts")
-                .get(controller.getAllProducts);
-//Get first 6 featured products
+ //Get first 6 featured products
 allProductsRoute.get("/Featured/",controller.getFeatured);
+
+//Get  Product details by ID
+allProductsRoute.route("/productdetails/:productid")
+                .get(controller.getProductById);
+
+
+
+// allProductsRoute.route("/allproducts")
+//                 .get(controller.getAllProducts);
+
 
 module.exports = allProductsRoute;
