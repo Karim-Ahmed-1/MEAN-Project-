@@ -1,18 +1,20 @@
-
+<app-navbar></app-navbar>
 <div class="container-fluid pt-5  pb-3">
   <h2 style=" margin-bottom: 20px; margin-top: 30px;" class="title"> Categories </h2>
 
   <!--Load all categories-->
   <div class="row px-xl-5 pb-3 my-5">
 
-      <app-cat class="col-lg-3 col-md-4 col-sm-6 pb-1 prd_click" *ngFor="let category of categories" [childcategories]="category" (myEventID)="getIdCategory($event)"></app-cat>
-                  
-  </div> 
+    <app-cat class="col-lg-3 col-md-4 col-sm-6 pb-1 prd_click" *ngFor="let category of categories"
+      [childcategories]="category" (myEventID)="getIdCategory($event)"></app-cat>
 
-   <!--Load all products-->
+  </div>
+
+  <!--Load all products-->
   <div class="row  px-xl-5 my-5">
 
-      <app-product  class="col-lg-3 col-md-4 col-sm-6 pb-1"*ngFor="let category of productsofCategory" [childproductsofcategory]="category" ></app-product>
+    <app-product class="col-lg-3 col-md-4 col-sm-6 pb-1" *ngFor="let category of productsofCategory"
+      [childproductsofcategory]="category"></app-product>
 
   </div>
 </div>

@@ -18,11 +18,14 @@ import { ProductComponent } from './components/product/product.component';
 import { CatComponent } from './components/cat/cat.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { DashboardPageComponent } from './components/dashboard-page/dashboard-page.component';
+import { DashboardtableComponent } from './components/dashboardtable/dashboardtable.component';
+import { DashboardNavComponent } from './components/dashboard-nav/dashboard-nav.component';
 
 const routes:Routes=[
   {path:'login',component:LoginPageComponent},
   {path:'register',component:RegisterPageComponent},
-  {path:'dashboard',component:DashboardComponent},
+  {path:'dashboard',component:DashboardPageComponent},
   {path:'',component:HomeComponent},
   {path:'home',component:HomeComponent},
   {path:'cart',component:CartComponent},
@@ -44,7 +47,10 @@ const routes:Routes=[
     ProductDetailsComponent,
     ProductComponent,
     CatComponent,
-    DashboardComponent
+    DashboardComponent,
+    DashboardPageComponent,
+    DashboardtableComponent,
+    DashboardNavComponent,
   ],
   imports: [
     FormsModule,

@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <section class="h-100 ">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
@@ -15,25 +16,22 @@
                   <div *ngIf="items.length==0" class="p-5">
                     <h5 class="text-center">Your Cart is Empty!</h5>
                   </div>
-                  <div class="row mb-4 d-flex justify-content-between align-items-center" *ngFor="let item of items; let i=index">
+                  <div class="row mb-4 d-flex justify-content-between align-items-center"
+                    *ngFor="let item of items; let i=index">
                     <div class="col-md-2 col-lg-2 col-xl-2">
-                      <img
-                        [src]="item.image"
-                        class="img-fluid rounded-3">
+                      <img [src]="item.image" class="img-fluid rounded-3">
                     </div>
                     <div class="col-md-3 col-lg-3 col-xl-3">
                       <h6 class="text-muted">{{item.title}}</h6>
                       <h6 class="mb-0 desc">{{item.description}}</h6>
                     </div>
                     <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                      <button class="btn btn-link px-2"
-                        (click)="decreaseQuantity($event,i)">
+                      <button class="btn btn-link px-2" (click)="decreaseQuantity($event,i)">
                         <i class="fas fa-minus"></i>
                       </button>
-                      <input id="form1" [value]="item.itemQuantity" min="1" name="quantity"  type="number"
-                        class="form-control form-control-sm"/>
-                      <button class="btn btn-link px-2"
-                        (click)="increaseQuantity($event,i)">
+                      <input id="form1" [value]="item.itemQuantity" min="1" name="quantity" type="number"
+                        class="form-control form-control-sm" />
+                      <button class="btn btn-link px-2" (click)="increaseQuantity($event,i)">
                         <i class="fas fa-plus"></i>
                       </button>
                     </div>
@@ -69,4 +67,3 @@
     </div>
   </div>
 </section>
-
