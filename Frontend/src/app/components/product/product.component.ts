@@ -1,4 +1,4 @@
-import { Component,Input } from '@angular/core';
+import { Component,EventEmitter,Input, Output } from '@angular/core';
 import { Product } from 'src/app/models/products';
 import { CartService } from 'src/app/services/cart.service';
 
@@ -9,12 +9,13 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class ProductComponent {
  @Input() childproductsofcategory:any;
-
- constructor (private cartService: CartService) {
-}
+ @Output() newItemEvent = new EventEmitter<string>();
+  nItems:any
+ constructor (private cartService: CartService) {}
 addToCart(product: Product) {
   product.itemQuantity=1
   this.cartService.addToCart(product);
+  this.nItems=this.cartService.countItems()
+  this.newItemEvent.emit(this.nItems)
 }
-
 }
