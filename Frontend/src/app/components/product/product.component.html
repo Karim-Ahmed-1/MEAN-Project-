@@ -1,7 +1,7 @@
 <div class="product-item bg-light mb-4">
   <div class="product-img position-relative overflow-hidden">
       <img class="w-100" [src]="childproductsofcategory.image" alt="">
-      <div class="product-action">
+      <div class="product-action" (click)="addToCart(childproductsofcategory)">
           <a class="btn btn-outline-dark btn-square"><i
               class="fa fa-shopping-cart"></i></a>
       </div>
