@@ -3,18 +3,18 @@
       <div class="col-lg-8 col-md-12 ">
           <div class="wrapper">
               <div class="product-img">
-                <img [src]="product?.image" height="420" width="327">
+                <img [src]="product.data.image" height="420" width="327">
               </div>
               <div class="product-info ">
                 <div class="product-text">
-                  <h1>{{product?.title}}</h1>
-                  <h2>{{product?.description}}</h2>
-                  <p class="pra">{{product?.richDescription}}</p>
+                  <h1>{{product.data.title}}</h1>
+                  <h2>{{product.data.description}}</h2>
+                  <p class="pra">{{product.data.richDescription}}</p>
                   <div class="Sizes mt-2">
-                      <p class="text-uppercase">Size :  <span >{{product?.size}}</span></p>
+                      <p class="text-uppercase">Size :  <span >{{product.data.size}}</span></p>
                   </div>
                   <div class="Sizes ">
-                      <p class="text-uppercase">Color :  <span >{{product?.color}}</span></p>
+                      <p class="text-uppercase">Color :  <span >{{product.data.color}}</span></p>
                   </div>
 
                   <div class=" mb-1 mt-1">
@@ -28,7 +28,7 @@
 
               </div>
                 <div class="product-price-btn">
-                  <p class=" mt-2"><span class="pri">{{product?.price}}</span>$</p>
+                  <p class=" mt-2"><span class="pri">{{product.data.price}}</span>$</p>
                   <button type="button">Add to cart </button>
                 </div>
               </div>
