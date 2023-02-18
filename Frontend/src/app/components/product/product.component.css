@@ -1,6 +1,5 @@
 .product-item {
   transition: 0.5s;
-
 }
 
 .product-action {
@@ -63,6 +62,10 @@
 }
 
 .product-item .btn:hover {
-  color: #6096B4 !important;
+  color: #6096b4 !important;
 }
 
+.colorclass {
+  background: #0f6292;
+  color: #fff;
+}

@@ -1,14 +1,15 @@
 import { CartService } from './../../services/cart.service';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
-export class CartComponent {
+export class CartComponent implements OnInit{
   items=this.cartService.getItems()
   total:any;
+  nItems:any
   quantityElement:any;
   calTotal(){
     this.total=0
@@ -18,6 +19,9 @@ export class CartComponent {
   }
   constructor(private cartService:CartService){
     this.calTotal();
+  }
+  ngOnInit(): void {
+    this.nItems=this.cartService.countItems()
   }
   increaseQuantity(e:any,i:any){
     this.quantityElement=e.target.parentNode.parentNode.querySelector('input[type=number]')
@@ -34,5 +38,6 @@ export class CartComponent {
   removeItem(product:any){
     this.items=this.cartService.removeItem(product)
     this.calTotal()
+    this.nItems=this.cartService.countItems()
   }
 }
