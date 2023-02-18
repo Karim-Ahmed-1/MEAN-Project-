@@ -18,8 +18,8 @@ allProductsRoute.route("/productdetails/:productid")
 
 
 
-// allProductsRoute.route("/allproducts")
-//                 .get(controller.getAllProducts);
+allProductsRoute.route("/allproducts")
+                .get(controller.getAllProducts);
 
 
 module.exports = allProductsRoute;

@@ -5,19 +5,21 @@
             <table class="table">
                 <thead class="table-dark">
                     <tr>
-                        <th>Salary</th>
                         <th>Image</th>
-                        <th>Product</th>
-                        <th>Categorie</th>
+                        <th>Title</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Operations</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr *ngFor="let item of products">
                         <td>
-                            <img class="imageformat rounded-circle" src="assets/product-s3.webp" alt="" />
+                            <img [src]="item.image" class="imageformat rounded-circle" alt="" />
                         </td>
-                        <td class="py-4">amal</td>
-                        <td class="py-4">amal</td>
+                        <td class="py-4">{{item.title}}</td>
+                        <td class="py-4">{{item.price}} L.E</td>
+                        <td class="py-4">{{item.quantity}}</td>
                         <td class="py-4">
                             <a class="btn btn-outline-danger rounded">Delete</a>
                             <a class="btn btn-outline-warning rounded ms-2" data-bs-toggle="modal" data-bs-target="#exampleModal2">

@@ -9,7 +9,7 @@ export class ProductService {
   URL:string="http://localhost:8080"
   constructor(private client: HttpClient) {}
     getAllProducts(){
-      return this.client.get(`${this.URL}/products`)
+      return this.client.get(`${this.URL}/allproducts`)
     }
     getFeaturedProducts(){
       return this.client.get(`${this.URL}/Featured/`)

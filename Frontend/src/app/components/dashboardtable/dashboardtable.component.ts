@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { FormBuilder,FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup} from '@angular/forms';
+import { ProductService } from 'src/app/services/product.service';
+
 
 
 @Component({
@@ -8,6 +10,13 @@ import { FormBuilder,FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./dashboardtable.component.css']
 })
 export class DashboardtableComponent {
+  products:any;
+  constructor (private productService:ProductService){}
+  ngOnInit():void{this.productService.getAllProducts().subscribe((res)=>{
+    this.products=res
+  }) 
+}
+
   productForm=new FormGroup({
     title:new FormControl('',[]),
     price:new FormControl('',[]),
@@ -34,4 +43,5 @@ getImagePath(e:any){
       //console.log(this.base64)
     }
   }
+
 }
