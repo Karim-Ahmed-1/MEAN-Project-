@@ -29,12 +29,7 @@ export class DashboardtableComponent {
     categories:new FormControl('',[]),
     smallDescription:new FormControl('',[]),
   })
-  updateproduct(e:any){
-    e.preventDefault();
-    //console.log(this.productForm)
-    if(this.productForm.status=="VALID")
-      console.log(this.productForm.value)
-  }
+
   base64:any;
 getImagePath(e:any){
   //script to get base64
@@ -54,5 +49,32 @@ getImagePath(e:any){
      })
    }) 
   }
+
+  product:any={data:{}}
+  productID:any
+  openUpdateProductForm(prodID:any){
+    this.productID=prodID;
+    this.productService.getProductDetailsById(prodID).subscribe((response) =>{
+      this.product=response
+     // console.log(this.product)
+    })
+  }
+  updateFormBody:any
+  
+  updateproduct(e:any){
+    e.preventDefault();
+    console.log(this.productForm)
+    this.updateFormBody=this.productForm.value;
+    this.updateFormBody.id=this.productID;
+    this.productService.updateProductByID(this.updateFormBody).subscribe((res)=>{
+      //console.log(res)
+    })
+    if(this.productForm.controls.quantity)
+    {
+      console.log("changed")
+    }
+    else
+    console.log("unchanged")
+    }
 }
 
