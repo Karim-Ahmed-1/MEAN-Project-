@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormControl,Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
@@ -10,8 +10,12 @@ import { CookieService } from 'ngx-cookie-service';
   templateUrl: './admin-login-page.component.html',
   styleUrls: ['./admin-login-page.component.css']
 })
-export class AdminLoginPageComponent {
+export class AdminLoginPageComponent implements OnInit{
 constructor(private router: Router,public loginService:LoginService,public cookiesService:CookieService){}
+  ngOnInit(): void {
+    if(this.cookiesService.get('token'))
+      this.router.navigateByUrl('/dashboard');
+  }
   userForm=new FormGroup({
     username:new FormControl('',[Validators.required]),
     password:new FormControl('',[Validators.required,Validators.minLength(3)]),
@@ -32,18 +36,18 @@ constructor(private router: Router,public loginService:LoginService,public cooki
       this.loginService.loginAdmin(this.body).subscribe((response)=>{
           this.token=response;
           if(this.token)
-           {
+          {
             const dateNow = new Date();
-            dateNow.setMinutes(dateNow.getHours() + 12);
+            dateNow.setHours(dateNow.getHours() + 12);
             this.cookiesService.set('token', this.token ,dateNow)
             this.router.navigateByUrl('/dashboard');
-           }
+          }
           //  else{
           //   alert("Wrong passord or username!")
           //  }
       })
     }
-      
-      
+
+
   }
 }
