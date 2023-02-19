@@ -26,5 +26,10 @@ allProductsRoute.route("/products/:id").delete(controller.deleteProduct);
 allProductsRoute.route("/products").patch(controller.UpdateProduct);
 
 
+allProductsRoute.route("/products").post(controller.addProduct);
+
+
+
+
 
 module.exports = allProductsRoute;

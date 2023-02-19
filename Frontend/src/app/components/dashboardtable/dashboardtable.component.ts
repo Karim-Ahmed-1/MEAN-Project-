@@ -74,7 +74,7 @@ getImagePath(e:any){
       console.log("changed")
     }
     else
-    console.log("unchanged")
+      console.log("unchanged")
     }
 }
 

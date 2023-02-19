@@ -18,9 +18,9 @@
                                         <label class="form-label" for="form3Example1c"
                                             style="font-weight: 800;">Title:</label>
                                         <div class="form-outline flex-fill mb-0">
-                                            <input type="text" 
-                                                id="form3Example1c" placeholder="Enter Your product title"
-                                                class="form-control" style=" width: 95%; margin-left: 18px;" formControlName="title" />
+                                            <input type="text" id="form3Example1c"
+                                                placeholder="Enter Your product title" class="form-control"
+                                                style=" width: 95%; margin-left: 18px;" formControlName="title" />
                                             <ng-container *ngIf="gettitle.touched">
                                                 <div *ngIf="gettitle.hasError('required')" id="emailHelp"
                                                     class="form-text text-danger">
@@ -35,9 +35,8 @@
                                                 <label class="form-label pt-3 " for="form3Example1c"
                                                     style="font-weight: 800;margin-top: -10px; margin-right: 12px;">price:</label>
                                                 <div class="form-outline flex-fill mb-0">
-                                                    <input type="text" 
-                                                        id="form3Example1c" placeholder="Price" class="form-control w-100"
-                                                        formControlName="price" />
+                                                    <input type="number" id="form3Example1c" placeholder="Price"
+                                                        class="form-control w-100" formControlName="price" />
                                                     <ng-container *ngIf="getprice.touched">
                                                         <div *ngIf="getprice.hasError('required')" id="emailHelp"
                                                             class="form-text text-danger">
@@ -51,8 +50,9 @@
                                                 <label class="form-label p-3" for="form3Example1c"
                                                     style="font-weight: 800; margin-top: -10px;">quantity:</label>
                                                 <div class="form-outline flex-fill mb-0">
-                                                    <input type="text" 
-                                                        id="form3Example1c" placeholder="Quantity" class="form-control "
+                                                    <input type="number" id="form3Example1c" placeholder="Quantity"
+                                                        class="form-control "
+                                                        max="255" min="0"
                                                         style="width: 95%;"
                                                         formControlName="quantity" />
                                                     <ng-container *ngIf="getquantity.touched">
@@ -70,10 +70,9 @@
                                             style="font-weight: 800; width: 20%;">Category:</label>
                                         <div class="form-outline flex-fill mb-0">
                                             <select class="form-select " style=" margin-left: 15px; width: 95%;"
-                                                aria-label="Default select example" formControlName="categories">
-                                                <option value="One">One</option>
-                                                <option value="Two">Two</option>
-                                                <option value="Three">Three</option>
+                                                aria-label="Default select example" formControlName="category">
+                                                <option *ngFor="let item of categories" value={{item._id}}>{{item.name}}
+                                                </option>
                                             </select>
                                             <ng-container *ngIf="getcategories.touched">
                                                 <div *ngIf="getcategories.hasError('required')" id="emailHelp"
@@ -88,9 +87,12 @@
                                             style="font-weight: 800;">Image:</label>
                                         <div class="form-outline flex-fill mb-0">
                                             <!-- <img src="{{base64}}" style="width: 200px;" height="100px"> -->
-                                            <input type="file" style="width: 95%; margin-left: 15px;"
+                                            <!-- <input type="file" style="width: 95%; margin-left: 15px;"
                                                 id="form3Example1c" class="form-control" formControlName="image"
-                                                (change)="getImagePath($event)" />
+                                                (change)="getImagePath($event)" /> -->
+                                            <input type="text" id="form3Example1c"
+                                                placeholder="Enter Your product image" class="form-control"
+                                                style=" width: 95%; margin-left: 18px;" formControlName="image" />
                                             <ng-container *ngIf="getimage.touched">
                                                 <div *ngIf="getimage.hasError('required')" id="emailHelp"
                                                     class="form-text text-danger">
@@ -105,7 +107,7 @@
                                         <div class="form-outline flex-fill mb-0">
                                             <input type="text" style="width: 95%; margin-left: 10px;"
                                                 id="form3Example1c" placeholder="Enter Your Description"
-                                                class="form-control" formControlName="smallDescription" />
+                                                class="form-control" formControlName="description" />
                                             <ng-container *ngIf="getsmallDescription.touched">
                                                 <div *ngIf="getsmallDescription.hasError('required')" id="emailHelp"
                                                     class="form-text text-danger">
@@ -120,10 +122,10 @@
                                             Description:</label>
                                         <div class="form-outline flex-fill mb-0">
                                             <textarea type="text"
-                                                style="max-width: 95%;  height: 200px; width: 95%;margin-left: 10px;" minlength="5"
-                                                maxlength="100" id="form3Example1c"
+                                                style="max-width: 95%;  height: 200px; width: 95%;margin-left: 10px;"
+                                                minlength="5" maxlength="100" id="form3Example1c"
                                                 placeholder="Enter Your product Description" class="form-control"
-                                                formControlName="description">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       </textarea>
+                                                formControlName="richDescription">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       </textarea>
                                             <ng-container *ngIf="getdescription.touched">
                                                 <div *ngIf="getdescription.hasError('required')" id="emailHelp"
                                                     class="form-text text-danger">

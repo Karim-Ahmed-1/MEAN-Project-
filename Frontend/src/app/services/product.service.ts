@@ -29,4 +29,7 @@ export class ProductService {
   deletProduct(id: any) {
     return this.client.delete(`${this.URL}/products/${id}`); 
   }
+  addProduct(body:any){
+    return this.client.post(`${this.URL}/products`,body)
+  }
 }
