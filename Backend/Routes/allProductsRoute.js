@@ -22,4 +22,9 @@ allProductsRoute.route("/allproducts").get(controller.getAllProducts);
 
 allProductsRoute.route("/products/:id").delete(controller.deleteProduct);
 
+
+allProductsRoute.route("/products").patch(controller.UpdateProduct);
+
+
+
 module.exports = allProductsRoute;

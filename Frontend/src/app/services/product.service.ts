@@ -23,7 +23,9 @@ export class ProductService {
     getProductDetailsById(id:any){
       return this.client.get(`${this.URL}/productdetails/${id}`)
   }
-  
+  updateProductByID(body:any){
+    return this.client.patch(`${this.URL}/products`,body)
+  }
   deletProduct(id: any) {
     return this.client.delete(`${this.URL}/products/${id}`); 
   }
