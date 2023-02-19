@@ -2,6 +2,8 @@ import { CartService } from 'src/app/services/cart.service';
 import { Component,OnInit } from '@angular/core';
 import { CateegoryService } from 'src/app/services/cateegory.service';
 import { ProductService } from 'src/app/services/product.service';
+import { CookieService } from 'ngx-cookie-service';
+// import { CookieService } from 'ngx-cookie';
 
 @Component({
   selector: 'app-products-categories',
@@ -24,6 +26,7 @@ ngOnInit(): void {
 addItem(e:any){
   this.nItems=e;
 }
+
 ShowProducts(id:any)
 {
   this.productservice.getProductswithCategoryID(id).subscribe((response)=>{

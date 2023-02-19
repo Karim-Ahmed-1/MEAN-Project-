@@ -21,7 +21,9 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DashboardPageComponent } from './components/dashboard-page/dashboard-page.component';
 import { DashboardtableComponent } from './components/dashboardtable/dashboardtable.component';
 import { DashboardNavComponent } from './components/dashboard-nav/dashboard-nav.component';
+
 import { AdminLoginPageComponent } from './components/admin-login-page/admin-login-page.component';
+
 
 const routes:Routes=[
   {path:'login',component:LoginPageComponent},
