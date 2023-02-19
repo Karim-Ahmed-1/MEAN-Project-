@@ -19,12 +19,17 @@ export class ProductsCategoriesComponent implements OnInit {
   constructor(public activeRoute:ActivatedRoute,public categoryservice:CateegoryService,public productservice:ProductService,public cartService:CartService){}
 
 ngOnInit(): void {
-  this.categoryservice.getAllCategories().subscribe((response)=>{
-    this.categories=response; })
   if(this.activeRoute.snapshot.params['id']){
-    this.ShowProducts(this.activeRoute.snapshot.params['id'])
+    this.categoryservice.getAllCategories().subscribe((response)=>{
+      this.categories=response;
+      this.ShowProducts(this.activeRoute.snapshot.params['id'])
+    })
   }else{
-    this.ShowProducts(this.categories[0]?._id)
+    console.log("nnnn")
+    this.categoryservice.getAllCategories().subscribe((response)=>{
+      this.categories=response;
+      this.ShowProducts(this.categories[0]?._id)
+    })
   }
   this.nItems=this.cartService.countItems()
 }
