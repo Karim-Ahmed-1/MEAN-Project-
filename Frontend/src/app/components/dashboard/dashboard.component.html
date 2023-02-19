@@ -10,9 +10,9 @@
                 <div class="container-fluid">
                     <div class="row justify-content-center my-5">
                         <div class="col-lg-12 col-sm-12 shadow-lg  bg-white  rounded  p-5">
-                            <div class="text-uppercase fw-semibold mb-4" style="margin-left: 120px;"> New product Form
+                            <div class="text-uppercase fw-semibold mb-4" style="text-align: center;"> New product Form
                             </div>
-                            <div style="display: flex; justify-content: space-between;">
+                            <div style="display: flex; justify-content:center;">
                                 <form [formGroup]="productForm" (ngSubmit)="addproduct($event)" style="margin-left: 40px;">
                                     <div class="d-flex flex-row align-items-center mb-4">
                                         <label class="form-label" for="form3Example1c" style="font-weight: 800;">Title:</label>
@@ -112,7 +112,7 @@
                                             </div>
                                             </div>
                                             <div>
-                                        <button style="margin-left: 50px; width: 100px;" type="submit" class="btn btn-primary btn-md"
+                                        <button type="submit" class="btn btn-primary btn-md w-100"
                                             [disabled]="!productForm.valid">Add</button>
                                         </div>
                                         </form>
