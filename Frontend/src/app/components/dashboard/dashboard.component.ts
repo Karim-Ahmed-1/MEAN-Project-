@@ -6,8 +6,7 @@ import { FormBuilder,FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent {
-  
-//  
+    
   productForm=new FormGroup({
   title:new FormControl('',[Validators.required]),
   price:new FormControl('',[Validators.required]),
