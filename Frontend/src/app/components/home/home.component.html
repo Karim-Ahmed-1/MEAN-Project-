@@ -1,5 +1,6 @@
 <app-navbar [nItem]="nItems"></app-navbar>
 <app-slider></app-slider>
+
 <div class="container my-5">
   <div class="d-flex justify-content-center flex-wrap">
     <div class="text-center m-2" *ngFor="let category of categories" routerLink="/products/{{category._id}}">
@@ -20,6 +21,7 @@
       atque ipsum ratione, earum consequatur nam dolore! Rerum, numquam consectetur?</p>
   </div>
 </div>
+<app-features-bar></app-features-bar>
 <div class="container p-5">
   <h1 class="mt-5 header"> Trending This Week </h1>
   <hr>

@@ -47,8 +47,8 @@
                         <label class="form-label" for="form3Example1c" style="font-weight: 800;">Title:</label>
                         <div class="form-outline flex-fill mb-0">
                             <input type="text" style="width: 300px; margin-left: 15px;" id="title"
-                                value={{product.data.title}}
-                                placeholder="Enter Your product title" class="form-control" formControlName="title" />
+                                value={{product.data.title}} placeholder="Enter Your product title" class="form-control"
+                                formControlName="title" />
                         </div>
                     </div>
                     <div class="d-flex flex-row align-items-center mb-4">
@@ -58,7 +58,8 @@
                                     style="font-weight: 800;margin-top: 5px;">price:</label>
                                 <div class="form-outline flex-fill mb-0">
                                     <input type="text" style="width: 100px; margin-left: 15px;" id="form3Example1c"
-                                    value={{product.data.price}} placeholder="Price" class="form-control" formControlName="price" />
+                                        value={{product.data.price}} placeholder="Price" class="form-control"
+                                        formControlName="price" />
                                 </div>
                             </div>
                             <div style="display: flex; justify-content: space-between; margin-left: 10px;">
@@ -66,7 +67,8 @@
                                     style="font-weight: 800; margin-top: 5px;">quantity:</label>
                                 <div class="form-outline flex-fill mb-0">
                                     <input type="text" style="width: 100px; margin-left: 15px;" id="form3Example1c"
-                                    value={{product.data.quantity}} placeholder="Quantity" class="form-control" formControlName="quantity" />
+                                        value={{product.data.quantity}} placeholder="Quantity" class="form-control"
+                                        formControlName="quantity" />
                                 </div>
                             </div>
                         </div>
@@ -76,39 +78,39 @@
                         <div class="form-outline flex-fill mb-0">
                             <select class="form-select" style="width: 250px; margin-left: 15px;"
                                 aria-label="Default select example" formControlName="categories">
-                                <option value="One">One</option>
-                                <option value="Two">Two</option>
-                                <option value="Three">Three</option>
+                                <option *ngFor="let item of categories" value={{item._id}}>{{item.name}}
+                                </option>
                             </select>
                         </div>
                     </div>
                     <div class="d-flex flex-row align-items-center mb-4">
-                        <label class="form-label" for="form3Example1c" style="font-weight: 800;">Image:</label>
+                        <label class="form-label" for="form3Example1c" style="font-weight: 800; margin-top: 90px;">Image:</label>
                         <div class="form-outline flex-fill mb-0">
                             <!-- <img src={{base64}} style="width: 200px;" height="100px"> -->
-                            <img src={{product.data.image}} class="imageformat rounded" style="margin-left: 15px; width: 200px; height: 80px;" alt="">
-                            <input type="file" style="width: 290px; margin-left: 15px;" id="form3Example1c"
-                                class="form-control" formControlName="image" (change)="getImagePath($event)" />
+                            <img src={{product.data.image}} class="imageformat rounded"
+                                style="margin-left: 40px;  width: 50%; height: 80px; display: block;" alt="">
+                            <!-- <input type="file" style="width: 290px; margin-left: 15px;" id="form3Example1c"
+                                class="form-control" formControlName="image" (change)="getImagePath($event)" /> -->
+                            <input type="text" id="form3Example1c" placeholder="Enter image URL"
+                                class="form-control" style=" width: 95%; margin-left: 18px;" formControlName="image" />
                         </div>
                     </div>
                     <div class="d-flex flex-row align-items-center mb-4">
                         <label class="form-label" for="form3Example1c" style="font-weight: 800;">Description:</label>
                         <div class="form-outline flex-fill mb-0">
                             <input type="text" style="width: 250px; margin-left: 15px;" id="form3Example1c"
-                            value={{product.data.description}} placeholder="Enter Your Description" class="form-control"
-                                formControlName="smallDescription" />
+                                value={{product.data.description}} placeholder="Enter Your Description"
+                                class="form-control" formControlName="smallDescription" />
                         </div>
                     </div>
                     <div class="d-flex flex-row align-items-center mb-4">
                         <label class="form-label" for="form3Example1c" style="font-weight: 800; margin-top: -50px;">Rich
                             Description:</label>
                         <div class="form-outline flex-fill mb-0">
-                            <textarea type="text" style="width: 210px; height: 150px; margin-left: 15px;" 
-                            
-                            minlength="5"            
-                            value={{product.data.richDescription}}
-                            maxlength="100" id="form3Example1c" placeholder="Enter Your product Description"
-                                class="form-control " formControlName="description">
+                            <textarea type="text" style="width: 210px; height: 150px; margin-left: 15px;" minlength="5"
+                                value={{product.data.richDescription}} maxlength="100" id="form3Example1c"
+                                placeholder="Enter Your product Description" class="form-control "
+                                formControlName="description">
                             </textarea>
                         </div>
                     </div>
