@@ -1,20 +1,30 @@
 <app-navbar [nItem]="nItems"></app-navbar>
-<div class="container-fluid pt-5  pb-3">
-  <h2 style=" margin-bottom: 20px; margin-top: 30px;" class="title"> Categories </h2>
 
-  <!--Load all categories-->
-  <div class="row px-xl-5 pb-3 my-5">
 
-    <app-cat class="col-lg-3 col-md-4 col-sm-6 pb-1 prd_click" *ngFor="let category of categories"
-      [childcategories]="category" (myEventID)="getIdCategory($event)"></app-cat>
+<div class="container-fluid">
+  <div class="row flex-nowrap">
+    <div class="col-lg-3 col-md-3 col-sm-2 px-sm-2 px-0 bg-light">
+      <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white  min-v-110 ">
+        <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+          <h2 style=" margin-bottom: 20px; margin-top: 30px;" class="title"> Categories </h2>
+        </a>
+        <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+          <li class="nav-item" *ngFor="let category of categories">
+            <a href="#" class="nav-link align-middle px-0">
+              <img [src]="category.icon" class="img">
+              <span class="font ms-1 d-none d-sm-inline">{{category.name}}</span>
+            </a>
+          </li>
+        </ul>
 
-  </div>
 
-  <!--Load all products-->
-  <div class="row  px-xl-5 my-5">
+      </div>
+    </div>
 
-    <app-product class="col-lg-3 col-md-4 col-sm-6 pb-1" *ngFor="let category of productsofCategory"
-      [childproductsofcategory]="category" (newItemEvent)="addItem($event)"></app-product>
+    <div class="col row py-3">
+      <app-product class="col-lg-3 col-md-6 col-sm-10 pb-1" *ngFor="let category of productsofCategory"
+        [childproductsofcategory]="category"></app-product>
+    </div>
 
   </div>
 </div>

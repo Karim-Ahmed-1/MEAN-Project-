@@ -1,3 +1,5 @@
+import { Product } from 'src/app/models/products';
+import { BrowserModule } from '@angular/platform-browser';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup} from '@angular/forms';
 import { ProductService } from 'src/app/services/product.service';
@@ -10,7 +12,8 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./dashboardtable.component.css']
 })
 export class DashboardtableComponent {
-  products:any;
+  products: any;
+  body: any;
   constructor (private productService:ProductService){}
   ngOnInit():void{this.productService.getAllProducts().subscribe((res)=>{
     this.products=res
@@ -43,5 +46,13 @@ getImagePath(e:any){
       //console.log(this.base64)
     }
   }
-
+ deleteUserHandler(productId: any)
+ {
+   this.productService.deletProduct(productId).subscribe((response) => {
+     this.products = this.products.filter((product: any) => {
+       return product._id != productId;
+     })
+   }) 
+  }
 }
+
