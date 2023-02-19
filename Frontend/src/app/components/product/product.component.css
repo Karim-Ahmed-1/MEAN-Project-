@@ -69,3 +69,12 @@
   background: #0f6292;
   color: #fff;
 }
+
+.btn-reverse:hover{
+  background-color: #ddd;
+  
+}
+.btn-reverse{
+  color:#0f6292;
+  background-color: #fff;
+}
