@@ -47,7 +47,7 @@ module.exports.updateProductValidation = [
 ];
 
 module.exports.deleteProductValidation = [
-  body("id").isMongoId().withMessage("Id must be ObjectId!"),
+  param("id").isMongoId().withMessage("Id must be ObjectId!"),
 ];
 
 module.exports.getProductByIdValidation = [

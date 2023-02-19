@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup} from '@angular/forms';
 import { ProductService } from 'src/app/services/product.service';
-
+import { CookieService } from 'ngx-cookie-service';
 
 
 @Component({
@@ -14,8 +14,10 @@ import { ProductService } from 'src/app/services/product.service';
 export class DashboardtableComponent {
   products: any;
   body: any;
-  constructor (private productService:ProductService){}
-  ngOnInit():void{this.productService.getAllProducts().subscribe((res)=>{
+  constructor(private productService: ProductService, public cookiesService: CookieService) { }
+ 
+  ngOnInit(): void{
+    this.productService.getAllProducts( this.cookiesService.get('token')).subscribe((res) => {
     this.products=res
   }) 
 }
@@ -43,7 +45,7 @@ getImagePath(e:any){
   }
  deleteUserHandler(productId: any)
  {
-   this.productService.deletProduct(productId).subscribe((response) => {
+   this.productService.deletProduct(productId, this.cookiesService.get('token')).subscribe((response) => {
      this.products = this.products.filter((product: any) => {
        return product._id != productId;
      })
@@ -55,19 +57,17 @@ getImagePath(e:any){
   openUpdateProductForm(prodID:any){
     this.productID=prodID;
     this.productService.getProductDetailsById(prodID).subscribe((response) =>{
-      this.product=response
-     // console.log(this.product)
+      this.product = response;
     })
   }
   updateFormBody:any
   
-  updateproduct(e:any){
+  updateproduct(e: any) {
     e.preventDefault();
     console.log(this.productForm)
     this.updateFormBody=this.productForm.value;
     this.updateFormBody.id=this.productID;
-    this.productService.updateProductByID(this.updateFormBody).subscribe((res)=>{
-      //console.log(res)
+    this.productService.updateProductByID(this.updateFormBody, this.cookiesService.get('token')).subscribe((res)=>{
     })
     if(this.productForm.controls.quantity)
     {

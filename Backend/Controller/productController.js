@@ -23,7 +23,7 @@ module.exports.getProductById = (request, response, next) => {
     .populate("category")
     .then((data) => {
       if (data == null) throw new Error("Product doesn't exist");
-      else response.status(200).json( {data} );
+      else response.status(200).json({ data });
     })
     .catch((error) => {
       next(error);
@@ -66,7 +66,7 @@ module.exports.UpdateProduct = async (request, response, next) => {
       },
       {
         $set: {
-          title:request.body.title ,
+          title: request.body.title,
           description: request.body.description,
           richDescription: request.body.richDescription,
           image: request.body.image,
@@ -80,15 +80,7 @@ module.exports.UpdateProduct = async (request, response, next) => {
         },
       }
     );
-    /*
-    if (!data.matchedCount) {
-      let error = new Error();
-      error.status = 404;
-      error.message = "product Not found";
-      throw error;
-    } else {
-      response.status(200).json({ data });
-    }*/
+
     response.status(200).json({ data });
   } catch (error) {
     next(error);
