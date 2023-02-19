@@ -33,7 +33,7 @@ module.exports.login = (request, response, next) => {
       process.env.SECRETKEY,
       { expiresIn: "12h" }
     );
-    response.status(200).json({ token });
+    response.status(200).json( token );
   } else {
     UserSchema.findOne({
       userName: request.body.userName,
