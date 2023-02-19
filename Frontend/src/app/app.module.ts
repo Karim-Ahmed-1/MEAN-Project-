@@ -23,6 +23,8 @@ import { DashboardtableComponent } from './components/dashboardtable/dashboardta
 import { DashboardNavComponent } from './components/dashboard-nav/dashboard-nav.component';
 
 import { AdminLoginPageComponent } from './components/admin-login-page/admin-login-page.component';
+import { FeaturesBarComponent } from './components/features-bar/features-bar.component';
+
 
 
 const routes:Routes=[
@@ -57,7 +59,9 @@ const routes:Routes=[
     DashboardPageComponent,
     DashboardtableComponent,
     DashboardNavComponent,
-    AdminLoginPageComponent
+    AdminLoginPageComponent,
+    FeaturesBarComponent,
+
   ],
   imports: [
     FormsModule,

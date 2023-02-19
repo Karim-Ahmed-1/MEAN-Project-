@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup} from '@angular/forms';
 import { ProductService } from 'src/app/services/product.service';
+import { CateegoryService } from 'src/app/services/cateegory.service';
 import { CookieService } from 'ngx-cookie-service';
 
 
@@ -14,13 +15,22 @@ import { CookieService } from 'ngx-cookie-service';
 export class DashboardtableComponent {
   products: any;
   body: any;
-  constructor(private productService: ProductService, public cookiesService: CookieService) { }
+  categories:any;
+  constructor(private productService: ProductService,private categorService:CateegoryService, public cookiesService: CookieService) { }
  
   ngOnInit(): void{
+    
     this.productService.getAllProducts( this.cookiesService.get('token')).subscribe((res) => {
     this.products=res
-  }) 
+  });
+  this.categorService.getAllCategories().subscribe((response)=>{
+    this.categories=response;})
 }
+
+
+
+
+
 
   productForm=new FormGroup({
     title:new FormControl('',[]),
