@@ -17,12 +17,12 @@ ProductRoute.route("/products")
     productValidation.updateProductValidation,
     checkValidations,
     controller.UpdateProduct
-  )
-  .delete(
+  );
+/*  .delete(
     productValidation.deleteProductValidation,
     checkValidations,
     controller.deleteProduct
-  );
+  )*/
 
 ProductRoute.get(
   "/products/:id",

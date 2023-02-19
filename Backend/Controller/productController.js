@@ -8,11 +8,10 @@ module.exports.getAllProducts = (request, response, next) => {
   if (request.query.categories) {
     filter = { category: request.query.categories.split(",") };
   }
-
   ProductSchema.find(filter)
     .populate("category")
     .then((data) => {
-      response.status(200).json( data );
+      response.status(200).json(data);
     })
     .catch((error) => {
       next(error);
@@ -97,7 +96,7 @@ module.exports.UpdateProduct = async (request, response, next) => {
 };
 
 module.exports.deleteProduct = (request, response, next) => {
-  ProductSchema.deleteOne({ _id: request.body.id })
+  ProductSchema.deleteOne({ _id: request.params.id })
     .then((data) => {
       response.status(201).json({ data });
     })
@@ -109,9 +108,7 @@ module.exports.deleteProduct = (request, response, next) => {
 module.exports.getFeatured = async (request, response, next) => {
   try {
     //const count = request.params.count ? request.params.count : 6;
-    const Products = await ProductSchema.find({ isFeatured: true }).limit(
-      6
-    );
+    const Products = await ProductSchema.find({ isFeatured: true }).limit(6);
     response.status(200).json({ Products });
   } catch (error) {
     next(error);
@@ -123,7 +120,7 @@ module.exports.getProductswithCategoryID = (request, response, next) => {
     .populate("category")
     .then((data) => {
       if (data == null) throw new Error("Product doesn't exist");
-      else response.status(200).json(data );
+      else response.status(200).json(data);
     })
     .catch((error) => {
       next(error);
