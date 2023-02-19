@@ -2,7 +2,7 @@
 <app-slider></app-slider>
 <div class="container my-5">
   <div class="d-flex justify-content-center flex-wrap">
-    <div class="text-center m-2" *ngFor="let category of categories">
+    <div class="text-center m-2" *ngFor="let category of categories" routerLink="/products/{{category._id}}">
       <img [src]="category.icon" class="category " width="150" height="150">
       <h5 class="proName mt-3">{{category.name}}</h5>
     </div>

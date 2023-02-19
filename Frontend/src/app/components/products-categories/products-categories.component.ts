@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
 import { Component,OnInit } from '@angular/core';
 import { CateegoryService } from 'src/app/services/cateegory.service';
@@ -14,16 +15,20 @@ export class ProductsCategoriesComponent implements OnInit {
   nItems:any
   categories:any;
   productsofCategory:any;
-  navItems:any=document.getElementsByClassName('slide-item')
-  constructor(public categoryservice:CateegoryService,public productservice:ProductService,public cartService:CartService){}
+  navItems:any=document.getElementsByClassName('slide-item');
+  constructor(public activeRoute:ActivatedRoute,public categoryservice:CateegoryService,public productservice:ProductService,public cartService:CartService){}
 
 ngOnInit(): void {
   this.categoryservice.getAllCategories().subscribe((response)=>{
-    this.categories=response;
+    this.categories=response; })
+  if(this.activeRoute.snapshot.params['id']){
+    this.ShowProducts(this.activeRoute.snapshot.params['id'])
+  }else{
     this.ShowProducts(this.categories[0]?._id)
-  })
+  }
   this.nItems=this.cartService.countItems()
 }
+
 addItem(e:any){
   this.nItems=e;
 }
