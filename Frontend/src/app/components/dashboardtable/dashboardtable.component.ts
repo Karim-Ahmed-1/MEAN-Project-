@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup} from '@angular/forms';
 import { ProductService } from 'src/app/services/product.service';
 import { CateegoryService } from 'src/app/services/cateegory.service';
+import { CookieService } from 'ngx-cookie-service';import { CateegoryService } from 'src/app/services/cateegory.service';
 
 
 
@@ -15,14 +16,16 @@ import { CateegoryService } from 'src/app/services/cateegory.service';
 export class DashboardtableComponent implements OnInit{
   products: any;
   body: any;
-  categories:any;
-  constructor (private productService:ProductService,private categorService:CateegoryService){}
-  ngOnInit():void{
-    this.productService.getAllProducts().subscribe((res)=>{
-    this.products=res })
-    this.categorService.getAllCategories().subscribe((response)=>{
-    this.categories=response;})
+  constructor (private productService:ProductService){}
+  ngOnInit():void{this.productService.getAllProducts().subscribe((res)=>{
+    this.products=res
+  })
 }
+
+
+
+
+
 
   productForm=new FormGroup({
     title:new FormControl('',[]),
@@ -49,7 +52,7 @@ getImagePath(e:any){
   }
  deleteUserHandler(productId: any)
  {
-   this.productService.deletProduct(productId).subscribe((response) => {
+   this.productService.deletProduct(productId, this.cookiesService.get('token')).subscribe((response) => {
      this.products = this.products.filter((product: any) => {
        return product._id != productId;
      })
@@ -61,12 +64,11 @@ getImagePath(e:any){
   openUpdateProductForm(prodID:any){
     this.productID=prodID;
     this.productService.getProductDetailsById(prodID).subscribe((response) =>{
-      this.product=response
-     // console.log(this.product)
+      this.product = response;
     })
   }
   updateFormBody:any
-  values:any
+
   updateproduct(e:any){
     e.preventDefault();
 
@@ -77,9 +79,7 @@ getImagePath(e:any){
 
     this.updateFormBody= {...this.product.data, ...dest };
     this.updateFormBody.id=this.productID;
-    console.log(this.updateFormBody)
-    this.productService.updateProductByID(this.updateFormBody).subscribe((res)=>{
-      //console.log(res)
+    this.productService.updateProductByID(this.updateFormBody, this.cookiesService.get('token')).subscribe((res)=>{
     })
   }
 }

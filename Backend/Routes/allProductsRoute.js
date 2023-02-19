@@ -5,31 +5,14 @@ const productValidation = require("./../core/validations/productValidations");
 
 const allProductsRoute = express.Router();
 
-//Get products with specific Category ID
 allProductsRoute
   .route("/products/:categoryid")
   .get(controller.getProductswithCategoryID);
 
-//Get first 6 featured products
 allProductsRoute.get("/Featured/", controller.getFeatured);
 
-//Get  Product details by ID
 allProductsRoute
   .route("/productdetails/:productid")
   .get(controller.getProductById);
-
-allProductsRoute.route("/allproducts").get(controller.getAllProducts);
-
-allProductsRoute.route("/products/:id").delete(controller.deleteProduct);
-
-
-allProductsRoute.route("/products").patch(controller.UpdateProduct);
-
-
-allProductsRoute.route("/products").post(controller.addProduct);
-
-
-
-
 
 module.exports = allProductsRoute;
