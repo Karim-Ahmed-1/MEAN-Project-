@@ -14,6 +14,7 @@ export class ProductsCategoriesComponent implements OnInit {
   nItems:any
   categories:any;
   productsofCategory:any;
+  navItems:any=document.getElementsByClassName('slide-item')
   constructor(public categoryservice:CateegoryService,public productservice:ProductService,public cartService:CartService){}
 
 ngOnInit(): void {
@@ -35,8 +36,14 @@ ShowProducts(id:any)
 }
 
 //Get id from component cat(child)
-getIdCategory(categoryid:any)
+getIdCategory(categoryid:any,i:any)
 {
+  for (const item of this.navItems) {
+    if(item.classList.contains('active')){
+      item.classList.remove('active')
+    }
+  }
+  this.navItems[i].classList.add("active")
   this.ShowProducts(categoryid)
 }
 }
