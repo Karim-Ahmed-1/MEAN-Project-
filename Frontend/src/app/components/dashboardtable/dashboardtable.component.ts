@@ -26,12 +26,6 @@ export class DashboardtableComponent {
   this.categorService.getAllCategories().subscribe((response)=>{
     this.categories=response;})
 }
-
-
-
-
-
-
   productForm=new FormGroup({
     title:new FormControl('',[]),
     price:new FormControl('',[]),
