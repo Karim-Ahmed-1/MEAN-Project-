@@ -14,7 +14,11 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private productService:ProductService,private categorService:CateegoryService, public cookiesService: CookieService,private router: Router){}
+  constructor(private productService:ProductService,private categorService:CateegoryService, public cookiesService: CookieService,private router: Router){
+    if (!(this.cookiesService.get('token'))) {
+      this.router.navigateByUrl('/home');
+    }
+  }
     
   productForm=new FormGroup({
   title:new FormControl('',[Validators.required]),

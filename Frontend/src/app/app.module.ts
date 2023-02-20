@@ -24,6 +24,7 @@ import { DashboardNavComponent } from './components/dashboard-nav/dashboard-nav.
 
 import { AdminLoginPageComponent } from './components/admin-login-page/admin-login-page.component';
 import { FeaturesBarComponent } from './components/features-bar/features-bar.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 
 
@@ -39,7 +40,7 @@ const routes:Routes=[
   {path:'products',component:ProductsCategoriesComponent},
   {path:'products/:id',component:ProductsCategoriesComponent},
   {path:'product/:id',component:ProductDetailsComponent},
- // {path:'**',component:ProductsCategoriesComponent},
+  {path:'**',component:NotFoundComponent},
 ]
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ const routes:Routes=[
     DashboardNavComponent,
     AdminLoginPageComponent,
     FeaturesBarComponent,
+    NotFoundComponent,
 
   ],
   imports: [

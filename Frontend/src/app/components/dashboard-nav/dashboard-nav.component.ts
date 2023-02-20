@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-dashboard-nav',
@@ -7,5 +9,13 @@ import { Component } from '@angular/core';
 })
 export class DashboardNavComponent {
   flag:boolean=false;
-
+  constructor(private router: Router,public cookiesService:CookieService)
+  {}
+  logOut()
+  {
+    const dateNow = new Date();
+    dateNow.setHours(dateNow.getDay() - 1);
+    this.cookiesService.set('token', "",dateNow);
+    this.router.navigateByUrl('/home');
+  }
 }

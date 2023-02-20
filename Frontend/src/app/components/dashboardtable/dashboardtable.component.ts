@@ -17,7 +17,11 @@ export class DashboardtableComponent implements OnInit{
   products: any;
   body: any;
   categories:any;
-  constructor (private router:Router,private productService:ProductService,private categorService:CateegoryService, public cookiesService: CookieService){}
+  constructor (private router:Router,private productService:ProductService,private categorService:CateegoryService, public cookiesService: CookieService){
+    if (!(this.cookiesService.get('token'))) {
+      this.router.navigateByUrl('/home');
+    }
+  }
   ngOnInit():void{
     this.productService.getAllProducts(this.cookiesService.get('token')).subscribe((res)=>{
     this.products=res })
