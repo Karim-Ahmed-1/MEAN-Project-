@@ -56,6 +56,7 @@ addproduct(e:any){
   //console.log(this.productForm)
   if(this.productForm.status=="VALID")
   {
+    //this.productForm.append('filedata',this.image);
     this.productService.addProduct(this.productForm.value).subscribe((res)=>{
     })
   }
@@ -72,8 +73,16 @@ getImagePath(e:any){
     this.base64=reader.result
     //console.log(this.base64)
   }
-
 }
+// image:any;
+// //choosen:boolean=false;
+// fileChoosen(event:any)
+// {
+//   if(event.target.value){
+//     this.image=<File>event.target.files[0];
+//     //this.choosen=true;
+//   }
+// }
 }
 
 
