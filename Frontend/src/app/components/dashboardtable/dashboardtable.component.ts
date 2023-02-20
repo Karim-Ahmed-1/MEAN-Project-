@@ -4,7 +4,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup} from '@angular/forms';
 import { ProductService } from 'src/app/services/product.service';
 import { CateegoryService } from 'src/app/services/cateegory.service';
-import { CookieService } from 'ngx-cookie-service';import { CateegoryService } from 'src/app/services/cateegory.service';
+import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
+
 
 
 
@@ -16,17 +18,16 @@ import { CookieService } from 'ngx-cookie-service';import { CateegoryService } f
 export class DashboardtableComponent implements OnInit{
   products: any;
   body: any;
-  constructor (private productService:ProductService){}
-  ngOnInit():void{this.productService.getAllProducts().subscribe((res)=>{
+  categories:any;
+  constructor (private router:Router ,private productService:ProductService,private cookiesService:CookieService,private categorService:CateegoryService ){}
+  ngOnInit(): void{
+
+    this.productService.getAllProducts( this.cookiesService.get('token')).subscribe((res) => {
     this.products=res
-  })
+  });
+  this.categorService.getAllCategories().subscribe((response)=>{
+    this.categories=response;})
 }
-
-
-
-
-
-
   productForm=new FormGroup({
     title:new FormControl('',[]),
     price:new FormControl('',[]),
@@ -68,7 +69,7 @@ getImagePath(e:any){
     })
   }
   updateFormBody:any
-
+  values:any
   updateproduct(e:any){
     e.preventDefault();
 
@@ -80,6 +81,8 @@ getImagePath(e:any){
     this.updateFormBody= {...this.product.data, ...dest };
     this.updateFormBody.id=this.productID;
     this.productService.updateProductByID(this.updateFormBody, this.cookiesService.get('token')).subscribe((res)=>{
+      this.router.navigate(['/dashboard']);
     })
+
   }
 }
