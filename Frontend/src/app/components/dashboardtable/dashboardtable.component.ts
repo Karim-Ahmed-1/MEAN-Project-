@@ -81,7 +81,6 @@ deleteUserHandler(productId: any)
     this.updateFormBody= {...this.product.data, ...dest };
     this.updateFormBody.id=this.productID;
     this.productService.updateProductByID(this.updateFormBody,this.cookiesService.get('token')).subscribe((res)=>{
-      alert("Product Updated Successfully")
       location.reload()
     })
 

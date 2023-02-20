@@ -11,7 +11,7 @@ module.exports.updateCategoryValidation = [
 ];
 
 module.exports.deleteCategoryValidation = [
-  body("id").isMongoId().withMessage("Id must be ObjectId!"),
+  param("id").isMongoId().withMessage("Id must be ObjectId!"),
 ];
 
 module.exports.getCategoryByIdValidation = [

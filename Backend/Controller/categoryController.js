@@ -16,7 +16,7 @@ module.exports.getCategorytById = (request, response, next) => {
   CategorySchema.findOne({ _id: request.params.id })
     .then((data) => {
       if (data == null) throw new Error("User not found");
-      else response.status(200).json({ data });
+      else response.status(200).json(data);
     })
     .catch((error) => {
       next(error);
@@ -39,7 +39,7 @@ module.exports.addCategory = (request, response, next) => {
 };
 
 module.exports.deleteCategory = (request, response, next) => {
-  CategorySchema.deleteOne({ _id: request.body.id })
+  CategorySchema.deleteOne({ _id: request.params.id })
     .then((data) => {
       response.status(200).json({ data });
     })

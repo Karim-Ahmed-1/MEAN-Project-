@@ -14,7 +14,7 @@ export class DashboardNavComponent {
   logOut()
   {
     const dateNow = new Date();
-    dateNow.setHours(dateNow.getDay() - 1);
+    dateNow.setHours(dateNow.getHours() - 1);
     this.cookiesService.set('token', "",dateNow);
     this.router.navigateByUrl('/home');
   }

@@ -25,6 +25,8 @@ import { DashboardNavComponent } from './components/dashboard-nav/dashboard-nav.
 import { AdminLoginPageComponent } from './components/admin-login-page/admin-login-page.component';
 import { FeaturesBarComponent } from './components/features-bar/features-bar.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { DashboardcategoryComponent } from './components/dashboardcategory/dashboardcategory.component';
+import { AddcategoryComponent } from './components/addcategory/addcategory.component';
 
 
 
@@ -34,6 +36,8 @@ const routes:Routes=[
   {path:'adminlogin',component:AdminLoginPageComponent},
   {path:'dashboard',component:DashboardPageComponent},
   {path:'dashboard/addproduct',component:DashboardComponent},
+  {path:'dashboard/categories',component:DashboardcategoryComponent},
+  {path:'dashboard/addcategory',component:AddcategoryComponent},
   {path:'',component:HomeComponent},
   {path:'home',component:HomeComponent},
   {path:'cart',component:CartComponent},
@@ -63,6 +67,8 @@ const routes:Routes=[
     AdminLoginPageComponent,
     FeaturesBarComponent,
     NotFoundComponent,
+    DashboardcategoryComponent,
+    AddcategoryComponent,
 
   ],
   imports: [

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -12,5 +12,21 @@ export class CateegoryService {
   getAllCategories()
   {
     return this.http.get(this.ARIUrl)
+  }
+  getCategoryById(id:any,token:any){
+    const headers = new HttpHeaders({ 'Authorization': `Bearer ${token}`})
+    return this.http.get(`${this.ARIUrl}/${id}`,{ headers })
+  }
+  addCategory(body: any,token:any) {
+    const headers = new HttpHeaders({ 'Authorization': `Bearer ${token}`})
+    return this.http.post(this.ARIUrl, body, { headers })
+  }
+  updateCategory(body: any,token:any) {
+    const headers = new HttpHeaders({ 'Authorization': `Bearer ${token}`})
+    return this.http.patch(this.ARIUrl, body, {headers})
+  }
+  deleteCategory(id: any,token: any) {
+  const headers = new HttpHeaders({ 'Authorization': `Bearer ${token}`})
+    return this.http.delete(`${this.ARIUrl}/${id}`, {headers});
   }
 }

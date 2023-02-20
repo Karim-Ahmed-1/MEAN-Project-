@@ -19,10 +19,15 @@ CategoryRoute.route("/categories")
     checkValidations,
     controller.updatecategory
   )
-  .delete(
+  CategoryRoute.route("/categories/:id").delete(
     categoryValidation.deleteCategoryValidation,
     checkValidations,
     controller.deleteCategory
+  );
+  CategoryRoute.route("/categories/:id").get(
+    categoryValidation.getCategoryByIdValidation,
+    checkValidations,
+    controller.getCategorytById
   );
 
 module.exports = CategoryRoute;
