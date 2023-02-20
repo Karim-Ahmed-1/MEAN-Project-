@@ -13,8 +13,7 @@ ProductRoute.route("/products")
     controller.addProduct
   )
   .patch(
-    productValidation.updateProductValidation,
-    checkValidations,
+    
     controller.UpdateProduct
   );
 

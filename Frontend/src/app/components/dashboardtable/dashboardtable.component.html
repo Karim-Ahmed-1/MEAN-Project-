@@ -96,7 +96,8 @@
                         <div class="form-outline flex-fill mb-0">
                             <select class="form-select" style="width: 250px; margin-left: 15px;"
                                 aria-label="Default select example" formControlName="categories">
-                                <option *ngFor="let item of categories" value={{item._id}}>{{item.name}}
+                                <option *ngFor="let item of categories" value={{item._id}}>
+                                  {{item.name}}
                                 </option>
                             </select>
                         </div>
