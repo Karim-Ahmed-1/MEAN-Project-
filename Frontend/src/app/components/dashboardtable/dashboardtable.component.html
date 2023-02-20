@@ -42,12 +42,12 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form [formGroup]="productForm" (ngSubmit)="updateproduct($event)" class="mx-1 mx-md-4">
+                <form [formGroup]="productForm"  class="mx-1 mx-md-4">
                     <div class="d-flex flex-row align-items-center mb-4">
                         <label class="form-label" for="form3Example1c" style="font-weight: 800;">Title:</label>
                         <div class="form-outline flex-fill mb-0">
                             <input type="text" style="width: 300px; margin-left: 15px;" id="title"
-                                placeholder="Enter Your product title" class="form-control" formControlName="title" />
+                              value="{{product.data.title}}"  placeholder="Enter Your product title" class="form-control" formControlName="title" />
                         </div>
                     </div>
                     <div class="d-flex flex-row align-items-center mb-4">
@@ -57,7 +57,7 @@
                                     style="font-weight: 800;margin-top: 5px;">price:</label>
                                 <div class="form-outline flex-fill mb-0">
                                     <input type="text" style="width: 100px; margin-left: 15px;" id="form3Example1c"
-                                    placeholder="Price" class="form-control" formControlName="price" />
+                                    value="{{product.data.price}}" placeholder="Price" class="form-control" formControlName="price" />
                                 </div>
                             </div>
                             <div style="display: flex; justify-content: space-between; margin-left: 10px;">
@@ -65,7 +65,7 @@
                                     style="font-weight: 800; margin-top: 5px;">quantity:</label>
                                 <div class="form-outline flex-fill mb-0">
                                     <input type="text" style="width: 100px; margin-left: 15px;" id="form3Example1c"
-                                        value={{product.data.quantity}} placeholder="Quantity" class="form-control"
+                                        value="{{product.data.quantity}}" placeholder="Quantity" class="form-control"
                                         formControlName="quantity" />
                                 </div>
                             </div>
@@ -78,15 +78,15 @@
                                   style="font-weight: 800;margin-top: 5px;">Size:</label>
                               <div class="form-outline flex-fill mb-0">
                                   <input type="text" style="width: 100px; margin-left: 15px;" id="form3Example1c"
-                                  placeholder="Size" class="form-control" formControlName="size" />
+                                  value="{{product.data.size}}" placeholder="Size" class="form-control" formControlName="size" />
                               </div>
                           </div>
                           <div style="display: flex; justify-content: space-between; margin-left: 10px;">
                               <label class="form-label" for="form3Example1c"
                                   style="font-weight: 800; margin-top: 5px;">Color:</label>
                               <div class="form-outline flex-fill mb-0">
-                                  <input type="text" style="width: 100px; margin-left: 15px;" id="form3Example1c"
-                                  placeholder="Color" class="form-control" formControlName="color" />
+                                  <input type="text" style="width: 130px; margin-left: 15px;" id="form3Example1c"
+                                  value="{{product.data.color}}" placeholder="Color" class="form-control" formControlName="color" />
                               </div>
                           </div>
                       </div>
@@ -107,7 +107,7 @@
                         <div class="form-outline flex-fill mb-0">
                             <!-- <img src={{base64}} style="width: 200px;" height="100px"> -->
                             <input type="file" style="width: 290px; margin-left: 15px;" id="form3Example1c"
-                                class="form-control" formControlName="image" />
+                            value="{{product.data.image}}" class="form-control" formControlName="image" />
                         </div>
                     </div>
                     <div class="d-flex flex-row align-items-center mb-4">
@@ -115,7 +115,7 @@
                         <div class="form-outline flex-fill mb-0">
                             <input type="text" style="width: 250px; margin-left: 15px;" id="form3Example1c"
                             placeholder="Enter Your Description" class="form-control"
-                                formControlName="smallDescription" />
+                            value="{{product.data.description}}"  formControlName="smallDescription" />
                         </div>
                     </div>
                     <div class="d-flex flex-row align-items-center mb-4">
@@ -124,14 +124,14 @@
                         <div class="form-outline flex-fill mb-0">
                             <textarea type="text" style="width: 210px; height: 150px; margin-left: 15px;"
                             minlength="5"
-                            maxlength="100" id="form3Example1c" placeholder="Enter Your product Description"
-                                class="form-control " formControlName="description">
+                            maxlength="400" id="form3Example1c" placeholder="Enter Your product Description"
+                            value="{{product.data.richDescription}}" class="form-control " formControlName="description">
                             </textarea>
                         </div>
                     </div>
                     <div>
                         <button style="margin-left: 50px; width: 100px;" type="submit"
-                            class="btn btn-primary btn-md">Update</button>
+                            class="btn btn-primary btn-md" (click)="updateproduct($event)">Update</button>
                     </div>
                 </form>
             </div>
