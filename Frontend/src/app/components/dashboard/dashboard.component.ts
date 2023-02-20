@@ -14,17 +14,23 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private productService:ProductService,private categorService:CateegoryService, public cookiesService: CookieService,private router: Router){}
-    
+  constructor(private productService:ProductService,private categorService:CateegoryService, public cookiesService: CookieService,private router: Router){
+    if (!(this.cookiesService.get('token'))) {
+      this.router.navigateByUrl('/home');
+    }
+  }
+
   productForm=new FormGroup({
   title:new FormControl('',[Validators.required]),
   price:new FormControl('',[Validators.required]),
   quantity:new FormControl('',[Validators.required]),
+  size:new FormControl('',[]),
+  color:new FormControl('',[]),
   description:new FormControl('',[Validators.required]),
   image:new FormControl('',[Validators.required]),
   category:new FormControl('',[Validators.required]),
   richDescription:new FormControl('',[Validators.required]),
-  
+
 });
 get gettitle(){
   return this.productForm.controls["title"];
@@ -34,6 +40,12 @@ get getprice(){
 }
 get getquantity(){
   return this.productForm.controls["quantity"];
+}
+get getsize(){
+  return this.productForm.controls["size"];
+}
+get getcolor(){
+  return this.productForm.controls["color"];
 }
 get getdescription(){
   return this.productForm.controls["richDescription"];
@@ -57,6 +69,7 @@ addproduct(e:any){
   e.preventDefault();
   if(this.productForm.status=="VALID")
   {
+    //this.productForm.append('filedata',this.image);
     this.productService.addProduct(this.productForm.value,this.cookiesService.get('token')).subscribe((res)=>{
       this.router.navigate(['/dashboard']);
     })
@@ -74,8 +87,16 @@ getImagePath(e:any){
     this.base64=reader.result
     //console.log(this.base64)
   }
-
 }
+// image:any;
+// //choosen:boolean=false;
+// fileChoosen(event:any)
+// {
+//   if(event.target.value){
+//     this.image=<File>event.target.files[0];
+//     //this.choosen=true;
+//   }
+// }
 }
 
 
