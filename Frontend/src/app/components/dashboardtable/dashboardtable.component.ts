@@ -1,10 +1,11 @@
+import { Router } from '@angular/router';
 import { Product } from 'src/app/models/products';
 import { BrowserModule } from '@angular/platform-browser';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup} from '@angular/forms';
 import { ProductService } from 'src/app/services/product.service';
 import { CateegoryService } from 'src/app/services/cateegory.service';
-
+import { CookieService } from 'ngx-cookie-service';
 
 
 @Component({
@@ -12,28 +13,24 @@ import { CateegoryService } from 'src/app/services/cateegory.service';
   templateUrl: './dashboardtable.component.html',
   styleUrls: ['./dashboardtable.component.css']
 })
-export class DashboardtableComponent {
+export class DashboardtableComponent implements OnInit{
   products: any;
   body: any;
   categories:any;
-  constructor (private productService:ProductService,private categorService:CateegoryService){}
+  constructor (private router:Router,private productService:ProductService,private categorService:CateegoryService, public cookiesService: CookieService){}
   ngOnInit():void{
-    this.productService.getAllProducts().subscribe((res)=>{
-    this.products=res
-  });
-  this.categorService.getAllCategories().subscribe((response)=>{
+    this.productService.getAllProducts(this.cookiesService.get('token')).subscribe((res)=>{
+    this.products=res })
+    this.categorService.getAllCategories().subscribe((response)=>{
     this.categories=response;})
 }
-
-
-
-
-
 
   productForm=new FormGroup({
     title:new FormControl('',[]),
     price:new FormControl('',[]),
     quantity:new FormControl('',[]),
+    size:new FormControl('',[]),
+    color:new FormControl('',[]),
     description:new FormControl('',[]),
     image:new FormControl('',[]),
     categories:new FormControl('',[]),
@@ -47,17 +44,16 @@ getImagePath(e:any){
     const reader=new FileReader();
     reader.readAsDataURL(file);
     reader.onload=()=>{
-      this.base64=reader.result
-      //console.log(this.base64)
+      this.base64 = reader.result;
     }
   }
- deleteUserHandler(productId: any)
- {
-   this.productService.deletProduct(productId).subscribe((response) => {
-     this.products = this.products.filter((product: any) => {
-       return product._id != productId;
-     })
-   }) 
+deleteUserHandler(productId: any)
+{
+  this.productService.deletProduct(productId,this.cookiesService.get('token')).subscribe((response) => {
+    this.products = this.products.filter((product: any) => {
+      return product._id != productId;
+    })
+  })
   }
 
   product:any={data:{}}
@@ -70,21 +66,19 @@ getImagePath(e:any){
     })
   }
   updateFormBody:any
-  
+  values:any
   updateproduct(e:any){
     e.preventDefault();
-    console.log(this.productForm)
-    this.updateFormBody=this.productForm.value;
-    this.updateFormBody.id=this.productID;
-    this.productService.updateProductByID(this.updateFormBody).subscribe((res)=>{
-      //console.log(res)
-    })
-    if(this.productForm.controls.quantity)
-    {
-      console.log("changed")
-    }
-    else
-      console.log("unchanged")
-    }
-}
+    this.values=this.productForm.value
+    const dest = Object.keys(this.values)
+    .filter(a => this.values[a] !== null && this.values[a] !== "")
+    .reduce((c:any, a) => { c[a] = this.values[a]; return c; }, {});
 
+    this.updateFormBody= {...this.product.data, ...dest };
+    this.updateFormBody.id=this.productID;
+    this.productService.updateProductByID(this.updateFormBody,this.cookiesService.get('token')).subscribe((res)=>{
+
+    })
+
+  }
+}

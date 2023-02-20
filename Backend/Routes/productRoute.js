@@ -6,23 +6,24 @@ const productValidation = require("./../core/validations/productValidations");
 
 const ProductRoute = express.Router();
 ProductRoute.route("/products")
-  .get(controller.getAllProducts)
+  .all(authorization.checkAdmin)
   .post(
-    authorization.checkAdmin,
     productValidation.addProductValidation,
     checkValidations,
     controller.addProduct
   )
   .patch(
-    productValidation.updateProductValidation,
-    checkValidations,
+    
     controller.UpdateProduct
   );
-/*  .delete(
-    productValidation.deleteProductValidation,
-    checkValidations,
-    controller.deleteProduct
-  )*/
+
+ProductRoute.delete(
+  "/products/:id",
+  authorization.checkAdmin,
+  productValidation.deleteProductValidation,
+  checkValidations,
+  controller.deleteProduct
+);
 
 ProductRoute.get(
   "/products/:id",
@@ -30,6 +31,12 @@ ProductRoute.get(
   productValidation.getProductByIdValidation,
   checkValidations,
   controller.getProductById
+);
+
+ProductRoute.get(
+  "/allproducts",
+  authorization.checkAdmin,
+  controller.getAllProducts
 );
 
 // ProductRoute.get(

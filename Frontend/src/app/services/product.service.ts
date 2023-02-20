@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -8,8 +8,9 @@ import { HttpClient } from '@angular/common/http';
 export class ProductService {
   URL: string = "http://localhost:8080"
   constructor(private client: HttpClient) {}
-    getAllProducts(){
-      return this.client.get(`${this.URL}/allproducts`)
+  getAllProducts(token:any) {
+       const headers = new HttpHeaders({ 'Authorization': `Bearer ${token}`})
+      return this.client.get(`${this.URL}/allproducts`, {headers})
     }
     getFeaturedProducts(){
       return this.client.get(`${this.URL}/Featured/`)
@@ -23,13 +24,19 @@ export class ProductService {
     getProductDetailsById(id:any){
       return this.client.get(`${this.URL}/productdetails/${id}`)
   }
-  updateProductByID(body:any){
-    return this.client.patch(`${this.URL}/products`,body)
+
+  updateProductByID(body: any,token:any) {
+    const headers = new HttpHeaders({ 'Authorization': `Bearer ${token}`})
+    return this.client.patch(`${this.URL}/products`, body, {headers})
   }
-  deletProduct(id: any) {
-    return this.client.delete(`${this.URL}/products/${id}`); 
+
+  deletProduct(id: any,token: any) {
+  const headers = new HttpHeaders({ 'Authorization': `Bearer ${token}`})
+    return this.client.delete(`${this.URL}/products/${id}`, { headers }); 
   }
-  addProduct(body:any){
-    return this.client.post(`${this.URL}/products`,body)
+
+  addProduct(body: any,token:any) {
+     const headers = new HttpHeaders({ 'Authorization': `Bearer ${token}`})
+    return this.client.post(`${this.URL}/products`, body, { headers })
   }
 }

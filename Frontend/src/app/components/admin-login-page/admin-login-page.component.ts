@@ -13,8 +13,9 @@ import { CookieService } from 'ngx-cookie-service';
 export class AdminLoginPageComponent implements OnInit{
 constructor(private router: Router,public loginService:LoginService,public cookiesService:CookieService){}
   ngOnInit(): void {
-    if(this.cookiesService.get('token'))
+    if (this.cookiesService.get('token')) {
       this.router.navigateByUrl('/dashboard');
+    }
   }
   userForm=new FormGroup({
     username:new FormControl('',[Validators.required]),

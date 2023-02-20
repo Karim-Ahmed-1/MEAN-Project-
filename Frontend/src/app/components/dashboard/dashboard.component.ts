@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder,FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProductService } from 'src/app/services/product.service';
 import { CateegoryService } from 'src/app/services/cateegory.service';
+import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 
 
 
@@ -12,7 +14,7 @@ import { CateegoryService } from 'src/app/services/cateegory.service';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private productService:ProductService,private categorService:CateegoryService){}
+  constructor(private productService:ProductService,private categorService:CateegoryService, public cookiesService: CookieService,private router: Router){}
     
   productForm=new FormGroup({
   title:new FormControl('',[Validators.required]),
@@ -53,11 +55,11 @@ ngOnInit(): void {this.categorService.getAllCategories().subscribe((response)=>{
 
 addproduct(e:any){
   e.preventDefault();
-  //console.log(this.productForm)
   if(this.productForm.status=="VALID")
   {
     //this.productForm.append('filedata',this.image);
-    this.productService.addProduct(this.productForm.value).subscribe((res)=>{
+    this.productService.addProduct(this.productForm.value,this.cookiesService.get('token')).subscribe((res)=>{
+      this.router.navigate(['/dashboard']);
     })
   }
     console.log(this.productForm.value)
