@@ -55,7 +55,6 @@ ngOnInit(): void {this.categorService.getAllCategories().subscribe((response)=>{
 
 addproduct(e:any){
   e.preventDefault();
-  //console.log(this.productForm)
   if(this.productForm.status=="VALID")
   {
     this.productService.addProduct(this.productForm.value,this.cookiesService.get('token')).subscribe((res)=>{

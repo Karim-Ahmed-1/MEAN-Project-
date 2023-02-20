@@ -47,8 +47,7 @@ getImagePath(e:any){
     const reader=new FileReader();
     reader.readAsDataURL(file);
     reader.onload=()=>{
-      this.base64=reader.result
-      //console.log(this.base64)
+      this.base64 = reader.result;
     }
   }
  deleteUserHandler(productId: any)
