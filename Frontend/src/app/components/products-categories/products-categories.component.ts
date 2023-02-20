@@ -25,7 +25,6 @@ ngOnInit(): void {
       this.ShowProducts(this.activeRoute.snapshot.params['id'])
     })
   }else{
-    console.log("nnnn")
     this.categoryservice.getAllCategories().subscribe((response)=>{
       this.categories=response;
       this.ShowProducts(this.categories[0]?._id)
