@@ -1,10 +1,13 @@
 import { Product } from 'src/app/models/products';
 import { BrowserModule } from '@angular/platform-browser';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup} from '@angular/forms';
 import { ProductService } from 'src/app/services/product.service';
 import { CateegoryService } from 'src/app/services/cateegory.service';
 import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
+
+
 
 
 @Component({
@@ -12,14 +15,13 @@ import { CookieService } from 'ngx-cookie-service';
   templateUrl: './dashboardtable.component.html',
   styleUrls: ['./dashboardtable.component.css']
 })
-export class DashboardtableComponent {
+export class DashboardtableComponent implements OnInit{
   products: any;
   body: any;
   categories:any;
-  constructor(private productService: ProductService,private categorService:CateegoryService, public cookiesService: CookieService) { }
- 
+  constructor (private router:Router ,private productService:ProductService,private cookiesService:CookieService,private categorService:CateegoryService ){}
   ngOnInit(): void{
-    
+
     this.productService.getAllProducts( this.cookiesService.get('token')).subscribe((res) => {
     this.products=res
   });
@@ -30,6 +32,8 @@ export class DashboardtableComponent {
     title:new FormControl('',[]),
     price:new FormControl('',[]),
     quantity:new FormControl('',[]),
+    size:new FormControl('',[]),
+    color:new FormControl('',[]),
     description:new FormControl('',[]),
     image:new FormControl('',[]),
     categories:new FormControl('',[]),
@@ -53,7 +57,7 @@ getImagePath(e:any){
      this.products = this.products.filter((product: any) => {
        return product._id != productId;
      })
-   }) 
+   })
   }
 
   product:any={data:{}}
@@ -65,20 +69,20 @@ getImagePath(e:any){
     })
   }
   updateFormBody:any
-  
-  updateproduct(e: any) {
+  values:any
+  updateproduct(e:any){
     e.preventDefault();
-    console.log(this.productForm)
-    this.updateFormBody=this.productForm.value;
+
+    this.values=this.productForm.value
+    const dest = Object.keys(this.values)
+    .filter(a => this.values[a] !== null && this.values[a] !== "")
+    .reduce((c:any, a) => { c[a] = this.values[a]; return c; }, {});
+
+    this.updateFormBody= {...this.product.data, ...dest };
     this.updateFormBody.id=this.productID;
     this.productService.updateProductByID(this.updateFormBody, this.cookiesService.get('token')).subscribe((res)=>{
+      this.router.navigate(['/dashboard']);
     })
-    if(this.productForm.controls.quantity)
-    {
-      console.log("changed")
-    }
-    else
-      console.log("unchanged")
-    }
-}
 
+  }
+}
