@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Product } from 'src/app/models/products';
 import { BrowserModule } from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
@@ -5,9 +6,6 @@ import { FormControl, FormGroup} from '@angular/forms';
 import { ProductService } from 'src/app/services/product.service';
 import { CateegoryService } from 'src/app/services/cateegory.service';
 import { CookieService } from 'ngx-cookie-service';
-import { Router } from '@angular/router';
-
-
 
 
 @Component({
@@ -19,15 +17,14 @@ export class DashboardtableComponent implements OnInit{
   products: any;
   body: any;
   categories:any;
-  constructor (private router:Router ,private productService:ProductService,private cookiesService:CookieService,private categorService:CateegoryService ){}
-  ngOnInit(): void{
-
-    this.productService.getAllProducts( this.cookiesService.get('token')).subscribe((res) => {
-    this.products=res
-  });
-  this.categorService.getAllCategories().subscribe((response)=>{
+  constructor (private router:Router,private productService:ProductService,private categorService:CateegoryService, public cookiesService: CookieService){}
+  ngOnInit():void{
+    this.productService.getAllProducts(this.cookiesService.get('token')).subscribe((res)=>{
+    this.products=res })
+    this.categorService.getAllCategories().subscribe((response)=>{
     this.categories=response;})
 }
+
   productForm=new FormGroup({
     title:new FormControl('',[]),
     price:new FormControl('',[]),
@@ -47,17 +44,16 @@ getImagePath(e:any){
     const reader=new FileReader();
     reader.readAsDataURL(file);
     reader.onload=()=>{
-      this.base64=reader.result
-      //console.log(this.base64)
+      this.base64 = reader.result;
     }
   }
- deleteUserHandler(productId: any)
- {
-   this.productService.deletProduct(productId, this.cookiesService.get('token')).subscribe((response) => {
-     this.products = this.products.filter((product: any) => {
-       return product._id != productId;
-     })
-   })
+deleteUserHandler(productId: any)
+{
+  this.productService.deletProduct(productId,this.cookiesService.get('token')).subscribe((response) => {
+    this.products = this.products.filter((product: any) => {
+      return product._id != productId;
+    })
+  })
   }
 
   product:any={data:{}}
@@ -65,14 +61,14 @@ getImagePath(e:any){
   openUpdateProductForm(prodID:any){
     this.productID=prodID;
     this.productService.getProductDetailsById(prodID).subscribe((response) =>{
-      this.product = response;
+      this.product=response
+     // console.log(this.product)
     })
   }
   updateFormBody:any
   values:any
   updateproduct(e:any){
     e.preventDefault();
-
     this.values=this.productForm.value
     const dest = Object.keys(this.values)
     .filter(a => this.values[a] !== null && this.values[a] !== "")
@@ -80,8 +76,8 @@ getImagePath(e:any){
 
     this.updateFormBody= {...this.product.data, ...dest };
     this.updateFormBody.id=this.productID;
-    this.productService.updateProductByID(this.updateFormBody, this.cookiesService.get('token')).subscribe((res)=>{
-      this.router.navigate(['/dashboard']);
+    this.productService.updateProductByID(this.updateFormBody,this.cookiesService.get('token')).subscribe((res)=>{
+
     })
 
   }

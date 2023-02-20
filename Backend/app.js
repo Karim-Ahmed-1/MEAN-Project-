@@ -5,14 +5,10 @@ const cors = require("cors");
 require("dotenv").config();
 const userRoute = require("./Routes/userRoute");
 const autthenticationRoute = require("./Routes/authenticationRoute");
-
 const categoryRoute = require("./Routes/categoryRoute");
 const productRoute = require("./Routes/productRoute");
-
 const allProductsRoute = require("./Routes/allProductsRoute");
 const allCategoryRoute = require("./Routes/allCategoriesRoute");
-
-
 const orderRoute = require("./Routes/orderRoute");
 const cartRoute = require("./Routes/cartRoute");
 const authorization = require("./core/Authroization/authorization");
