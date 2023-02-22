@@ -24,9 +24,13 @@ export class DashboardtableComponent implements OnInit{
   }
   ngOnInit():void{
     this.productService.getAllProducts(this.cookiesService.get('token')).subscribe((res)=>{
-    this.products=res })
+      this.products = res
+    })
+    
+    
     this.categorService.getAllCategories().subscribe((response)=>{
-    this.categories=response;})
+      this.categories = response;
+    })
 }
 
   productForm=new FormGroup({
@@ -43,7 +47,6 @@ export class DashboardtableComponent implements OnInit{
 
   base64:any;
 getImagePath(e:any){
-  //script to get base64
     const file =e.target.files[0]
     const reader=new FileReader();
     reader.readAsDataURL(file);
@@ -51,7 +54,7 @@ getImagePath(e:any){
       this.base64 = reader.result;
     }
   }
-deleteUserHandler(productId: any)
+deleteProductHandler(productId: any)
 {
   this.productService.deletProduct(productId,this.cookiesService.get('token')).subscribe((response) => {
     this.products = this.products.filter((product: any) => {
@@ -59,14 +62,13 @@ deleteUserHandler(productId: any)
     })
   })
   }
-
   product:any={data:{}}
   productID:any
   openUpdateProductForm(prodID:any){
     this.productID=prodID;
     this.productService.getProductDetailsById(prodID).subscribe((response) =>{
       this.product=response
-     // console.log(this.product)
+  
     })
   }
   updateFormBody:any
