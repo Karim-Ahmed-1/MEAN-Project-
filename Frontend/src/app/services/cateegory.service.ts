@@ -26,8 +26,13 @@ export class CateegoryService {
     return this.http.post(this.ARIUrl, categoryData, { headers })
   }
   updateCategory(body: any,token:any) {
+    const categoryData=new FormData();
+    categoryData.append('id',body.id)
+    categoryData.append('name',body.name)
+    categoryData.append('icon',body.icon)
+
     const headers = new HttpHeaders({ 'Authorization': `Bearer ${token}`})
-    return this.http.patch(this.ARIUrl, body, {headers})
+    return this.http.patch(this.ARIUrl, categoryData, {headers})
   }
   deleteCategory(id: any,token: any) {
   const headers = new HttpHeaders({ 'Authorization': `Bearer ${token}`})

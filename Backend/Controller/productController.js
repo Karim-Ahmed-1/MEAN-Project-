@@ -83,6 +83,8 @@ module.exports.addProduct = async (request, response, next) => {
 };
 
 module.exports.UpdateProduct = async (request, response, next) => {
+  const file = request.file;
+  const fileName = file?.filename;
   try {
     if (request.body.category) {
       const category = await CategorySchema.findById(request.body.category);
@@ -97,7 +99,7 @@ module.exports.UpdateProduct = async (request, response, next) => {
           title: request.body.title,
           description: request.body.description,
           richDescription: request.body.richDescription,
-          image: request.body.image,
+          image: `assets/imgs/products/${fileName}`,
           price: request.body.price,
           quantity: request.body.quantity,
           category: request.body.category,

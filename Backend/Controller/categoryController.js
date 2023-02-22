@@ -79,12 +79,14 @@ module.exports.deleteCategory = (request, response, next) => {
 
 ///////////////////////////////////////////////////////////////////to DO
 module.exports.updatecategory = (request, response, next) => {
+  const file = request.file;
+  const fileName = file.filename
   CategorySchema.updateOne(
     { _id: request.body.id },
     {
       $set: {
         name: request.body.name,
-        icon: request.body.icon,
+        icon: `assets/categoryicons/${fileName}`,
       },
     }
   )

@@ -14,7 +14,9 @@ ProductRoute.route("/products")
     controller.addProduct
   )
   .patch(
-    
+    controller.uploadOptions.single('image'),
+    productValidation.updateProductValidation,
+    checkValidations,
     controller.UpdateProduct
   );
 
