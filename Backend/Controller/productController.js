@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const multer = require("multer");
 require("./../Model/product");
 const ProductSchema = mongoose.model("product");
 const CategorySchema = mongoose.model("category");
@@ -30,12 +31,39 @@ module.exports.getProductById = (request, response, next) => {
     });
 };
 
+//Upload image 
+const FILE_TYPE_MAP = {
+  'image/png': 'png',
+  'image/jpeg': 'jpeg',
+  'image/jpg': 'jpg'
+}
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+      const isValid = FILE_TYPE_MAP[file.mimetype];
+      let uploadError = new Error('invalid image type');
+
+      if(isValid) {
+          uploadError = null
+      }
+    cb(uploadError, './../Frontend/src/assets/imgs/products')
+  },
+  filename: function (req, file, cb) {
+      
+    const fileName = file.originalname.split(' ').join('-');
+    const extension = FILE_TYPE_MAP[file.mimetype];
+    cb(null, `${fileName}-${Date.now()}.${extension}`)
+  }
+})
+module.exports.uploadOptions = multer({ storage: storage })
+
 module.exports.addProduct = async (request, response, next) => {
+    const file = request.file;
+    const fileName = file.filename;
   let productObject = new ProductSchema({
     title: request.body.title,
     description: request.body.description,
     richDescription: request.body.richDescription,
-    image: request.body.image,
+    image:`assets/imgs/products/${fileName}`,
     price: request.body.price,
     quantity: request.body.quantity,
     category: request.body.category,

@@ -66,37 +66,22 @@ ngOnInit(): void {this.categorService.getAllCategories().subscribe((response)=>{
   this.categories=response;})}
 
 addproduct(e:any){
-  e.preventDefault();
   if(this.productForm.status=="VALID")
   {
-    //this.productForm.append('filedata',this.image);
     this.productService.addProduct(this.productForm.value,this.cookiesService.get('token')).subscribe((res)=>{
       this.router.navigate(['/dashboard']);
     })
   }
     console.log(this.productForm.value)
 }
-
-base64:any;
-getImagePath(e:any){
-  //script to get base64
-  const file =e.target.files[0]
-  const reader=new FileReader();
-  reader.readAsDataURL(file);
-  reader.onload=()=>{
-    this.base64=reader.result
-    //console.log(this.base64)
-  }
+fileChoosen(event:any)
+{
+  console.log(event.target.files[0])
+  const file=event.target.files[0];
+  this.productForm.patchValue({image:file});
+  this.productForm.get('image')!.updateValueAndValidity();
+  
 }
-// image:any;
-// //choosen:boolean=false;
-// fileChoosen(event:any)
-// {
-//   if(event.target.value){
-//     this.image=<File>event.target.files[0];
-//     //this.choosen=true;
-//   }
-// }
 }
 
 

@@ -7,7 +7,7 @@ module.exports.addProductValidation = [
     .optional()
     .isString()
     .withMessage("richDescription must be String!"),
-  body("image").isString().withMessage("Image must be String!"),
+  //body("image").isString().withMessage("Image must be String!"),
   body("price").isInt().withMessage("Price must be number!"),
   body("quantity").isInt().withMessage("Quantity must be number!"),
   body("size").optional().isString().withMessage("Size must be String!"),

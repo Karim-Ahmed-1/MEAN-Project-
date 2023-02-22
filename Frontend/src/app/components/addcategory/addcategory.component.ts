@@ -31,4 +31,12 @@ export class AddcategoryComponent {
     }
       console.log(this.categoryForm.value)
   }
+  fileChoosen(event:any)
+{
+  console.log(event.target.files[0])
+  const file=event.target.files[0];
+  this.categoryForm.patchValue({icon:file});
+  this.categoryForm.get('icon')!.updateValueAndValidity();
+  
+}
 }

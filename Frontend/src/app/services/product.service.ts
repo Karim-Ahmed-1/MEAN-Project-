@@ -36,7 +36,18 @@ export class ProductService {
   }
 
   addProduct(body: any,token:any) {
+    const productData=new FormData();
+    productData.append('title',body.title)
+    productData.append('price',body.price)
+    productData.append('quantity',body.quantity)
+    productData.append('size',body.size)
+    productData.append('color',body.color)
+    productData.append('description',body.description)
+    productData.append('image',body.image)
+    productData.append('category',body.category)
+    productData.append('richDescription',body.richDescription)
+    
      const headers = new HttpHeaders({ 'Authorization': `Bearer ${token}`})
-    return this.client.post(`${this.URL}/products`, body, { headers })
+    return this.client.post(`${this.URL}/products`, productData, { headers })
   }
 }

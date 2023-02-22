@@ -8,6 +8,7 @@ const ProductRoute = express.Router();
 ProductRoute.route("/products")
   .all(authorization.checkAdmin)
   .post(
+    controller.uploadOptions.single('image'),
     productValidation.addProductValidation,
     checkValidations,
     controller.addProduct

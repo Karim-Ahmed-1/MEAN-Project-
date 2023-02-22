@@ -15,7 +15,7 @@ const ProductSchema = new mongoose.Schema({
 
   size: { type: String, default: "" },
   color: { type: String, default: "" },
-  rate: { type: Number, default: 0 },
+  rate: { type: Number, default: 5 },
   isFeatured: {
     type: Boolean,
     default: false,

@@ -10,6 +10,7 @@ CategoryRoute.route("/categories")
   .all(authorization.checkAdmin)
   .get(controller.getAllCategories)
   .post(
+    controller.uploadOptions.single('icon'),
     categoryValidation.addCategoryValidation,
     checkValidations,
     controller.addCategory

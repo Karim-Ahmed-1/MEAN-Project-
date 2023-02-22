@@ -18,8 +18,12 @@ export class CateegoryService {
     return this.http.get(`${this.ARIUrl}/${id}`,{ headers })
   }
   addCategory(body: any,token:any) {
+    const categoryData=new FormData();
+    categoryData.append('name',body.name)
+    categoryData.append('icon',body.icon)
+    
     const headers = new HttpHeaders({ 'Authorization': `Bearer ${token}`})
-    return this.http.post(this.ARIUrl, body, { headers })
+    return this.http.post(this.ARIUrl, categoryData, { headers })
   }
   updateCategory(body: any,token:any) {
     const headers = new HttpHeaders({ 'Authorization': `Bearer ${token}`})

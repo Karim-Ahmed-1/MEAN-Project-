@@ -110,12 +110,12 @@
                                             <!-- <input type="file" style="width: 95%; margin-left: 15px;"
                                                 id="form3Example1c" class="form-control" formControlName="image"
                                                 (change)="getImagePath($event)" /> -->
-                                            <input type="text" id="form3Example1c"
-                                                placeholder="Enter Your product image" class="form-control"
-                                                style=" width: 95%; margin-left: 18px;" formControlName="image" />
-                                                <!-- <input type="file" (input)="fileChoosen($event)" id="form3Example1c"
+                                            <!-- <input type="text" id="form3Example1c"
                                                 placeholder="Enter Your product image" class="form-control"
                                                 style=" width: 95%; margin-left: 18px;" formControlName="image" /> -->
+                                                <input type="file" (change)="fileChoosen($event)" id="form3Example1c"
+                                                placeholder="Enter Your product image" class="form-control"
+                                                style=" width: 95%; margin-left: 18px;" />
                                             <ng-container *ngIf="getimage.touched">
                                                 <div *ngIf="getimage.hasError('required')" id="emailHelp"
                                                     class="form-text text-danger">

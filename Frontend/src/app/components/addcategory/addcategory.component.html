@@ -33,9 +33,9 @@
                                 <label class="form-label" for="form3Example1c"
                                     style="font-weight: 800; font-size: large;">Icon:</label>
                                 <div class="form-outline flex-fill mb-0">
-                                    <input type="text" id="form3Example1c"
+                                    <input type="file" (change)="fileChoosen($event)" id="form3Example1c"
                                         placeholder="Enter Your Category Icon" class="form-control"
-                                        style=" width: 95%; margin-left: 18px;" formControlName="icon" />
+                                        style=" width: 95%; margin-left: 18px;" />
                                     <ng-container *ngIf="geticon.touched">
                                         <div *ngIf="geticon.hasError('required')"
                                             class="form-text text-danger">
