@@ -87,4 +87,12 @@ deleteProductHandler(productId: any)
     })
 
   }
+fileChoosen(event:any)
+{
+  console.log(event.target.files[0])
+  const file=event.target.files[0];
+  this.productForm.patchValue({image:file});
+  this.productForm.get('image')!.updateValueAndValidity();
+  
+}
 }

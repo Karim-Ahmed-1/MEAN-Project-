@@ -16,6 +16,7 @@ CategoryRoute.route("/categories")
     controller.addCategory
   )
   .patch(
+    controller.uploadOptions.single('icon'),
     categoryValidation.updateCategoryValidation,
     checkValidations,
     controller.updatecategory
