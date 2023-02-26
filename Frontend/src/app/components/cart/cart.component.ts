@@ -54,11 +54,12 @@ export class CartComponent implements OnInit{
       this.router.navigateByUrl('/login');
      } else {
         this.loginflag = true;
-       // this.cartService.clearCart(); 
-  
+       this.cartService.clearCart();
+       this.items=[]
+
     }
     }
-     
-    
+
+
   }
 }
