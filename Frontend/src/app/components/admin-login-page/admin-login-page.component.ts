@@ -17,6 +17,7 @@ constructor(private router: Router,public loginService:LoginService,public cooki
       this.router.navigateByUrl('/dashboard');
     }
   }
+
   userForm=new FormGroup({
     username:new FormControl('',[Validators.required]),
     password:new FormControl('',[Validators.required,Validators.minLength(3)]),
@@ -27,6 +28,8 @@ constructor(private router: Router,public loginService:LoginService,public cooki
   get getPassword(){
     return this.userForm.controls["password"];
   }
+  errorFlag: boolean = false;
+  
   token:any="";
   body:any={userName:"",password:""};
   login(e:any){
@@ -35,18 +38,13 @@ constructor(private router: Router,public loginService:LoginService,public cooki
       this.body.userName=this.userForm.value.username;
       this.body.password=this.userForm.value.password;
       this.loginService.loginAdmin(this.body).subscribe((response)=>{
-          this.token=response;
-          if(this.token)
-          {
+            this.token=response;
             const dateNow = new Date();
             dateNow.setHours(dateNow.getHours() + 12);
             this.cookiesService.set('token', this.token ,dateNow)
             this.router.navigateByUrl('/dashboard');
-          }
-          //  else{
-          //   alert("Wrong passord or username!")
-          //  }
-      })
+
+      },error=>{ this.errorFlag = true;})
     }
 
 

@@ -36,6 +36,7 @@
                                             </div>
                                         </ng-container>
                                     </div>
+                                    <div class="h7 text-danger " *ngIf="errorFlag">Wrong username and Password</div>
                                     <div style="display: flex; justify-content: space-between;">
                                         <button type="submit" class="btn btn-primary mt-3  " style="width: 120px;"
                                             [disabled]="!userForm.valid">Login</button>

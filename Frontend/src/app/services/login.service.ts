@@ -7,11 +7,11 @@ import { HttpClient } from '@angular/common/http';
 export class LoginService {
 
   ARIUrl:string="http://localhost:8080/login"
-  constructor(public http:HttpClient) {
+  constructor(public client:HttpClient) {
   }
   loginAdmin(body:any)
   {
-    //console.log(body)
-    return this.http.post(this.ARIUrl,body)
+    
+    return this.client.post(this.ARIUrl,body)
   }
 }

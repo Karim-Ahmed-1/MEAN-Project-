@@ -3,7 +3,6 @@ const addressSchema = new mongoose.Schema(
   {
     city: { type: String },
     street: { type: String },
-    building: { type: Number },
   },
   { _id: false }
 );

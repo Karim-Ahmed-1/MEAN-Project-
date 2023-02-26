@@ -57,7 +57,10 @@
                     <h5 class="text-uppercase">Total price</h5>
                     <h5>{{total}} L.E</h5>
                   </div>
-                  <button type="button" class="btn btn-primary btn-block btn-lg">Check Out</button>
+                  <button type="button" class="btn btn-primary btn-block btn-lg" (click)="forceLogin()">Check
+                    Out</button>
+                  <div *ngIf="emptyflag" class="my-5 text-danger">Add Products to card first</div>
+                  <div *ngIf="loginflag" class="my-5 text-success">Your order is sending.....</div>
                 </div>
               </div>
             </div>

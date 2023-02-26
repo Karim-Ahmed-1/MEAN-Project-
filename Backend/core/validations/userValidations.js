@@ -3,15 +3,12 @@ const { body, param } = require("express-validator");
 module.exports.addUserValidation = [
   body("fullName").isAlpha().withMessage("fullName should be string"),
   body("userName").isString().withMessage("userName should be string"),
-  body("password")
-    .isStrongPassword()
-    .withMessage("Teacher Password should be strong"),
+  body("password").isString().withMessage("Teacher Password should be strong"),
   body("email").isEmail().withMessage("Email should be in email formate "),
   body("phone").isString().withMessage("should be in phone formate"),
   body("address").isObject().withMessage("address should be object"),
   body("address.city").isAlpha().withMessage("city should be string"),
   body("address.street").isString().withMessage("street should be string"),
-  body("address.building").isInt().withMessage("building should be number"),
 ];
 
 module.exports.updateUserValidation = [
@@ -33,7 +30,6 @@ module.exports.updateUserValidation = [
   body("address").optional().isObject().withMessage("address should be object"),
   body("address.city").isAlpha().withMessage("city should be string"),
   body("address.street").isString().withMessage("street should be string"),
-  body("address.building").isInt().withMessage("building should be number"),
 ];
 
 module.exports.deleteUserValidation = [

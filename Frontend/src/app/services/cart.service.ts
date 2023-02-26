@@ -31,10 +31,12 @@ export class CartService {
     this.items=this.items.filter((item,i)=>product!=item)
     return this.items
   }
+
   clearCart() {
     this.items = [];
     localStorage.setItem('items','this.items')
     localStorage.setItem('nitems','this.items.length')
     return this.items;
   }
+  
 }

@@ -7,11 +7,12 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  @Input() nItem=this.cartService.countItems()
-  constructor(public cartService:CartService){
+  @Input() nItem = this.cartService.countItems()
+  constructor(public cartService: CartService) {
   }
   ngOnInit(): void {
-
+     
   }
-
+  @Input() Name: any = "";
+ 
 }
